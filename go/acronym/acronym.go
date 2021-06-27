@@ -1,30 +1,27 @@
-package main
+//package main
+package acronym
 
 import (
-	//"strings"
-	"fmt"
+	//"fmt"
 	"regexp"
+	"strings"
 )
 
 // Return the acronym of a given phrase
 func Abbreviate(s string) string {
-	r := regexp.MustCompile("[a-zA-Z]*")
+	r := regexp.MustCompile("[^A-Za-z]*")
+	//r := regexp.MustCompile("[a-zA-Z]*")
 	words := r.FindAllString(s, -1)
-	fmt.Println(words)
-//	standardizeInput := strings.Title(strings.ToLower(strings.Join(words, "")))
-	return "made it"
-//	fmt.Println(standardizeInput)	
 	 
-	// var acronym []string
-	// for _, word:= range splitString {
-	// 	firstLetter:= string(word[0])
-	// 	acronym = append(acronym, firstLetter)
-	// }
-	// return strings.Join(acronym, "") 
-    //
+	standardizeInput := strings.Title(strings.ToLower(strings.Join(words, " ")))
+
+	capitalLetters := regexp.MustCompile("[A-Z]+")
+	acronym := capitalLetters.FindAllString(standardizeInput, -1)
+	return strings.Join(acronym, "")
+ 
 }
 
-func main() {
-	fmt.Println(Abbreviate("Hello World"))
-}
+// func main() {
+// 	fmt.Println(Abbreviate("Hello world-Here"))
+// }
 
