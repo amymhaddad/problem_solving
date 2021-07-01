@@ -19,47 +19,47 @@ var testCases = []struct {
 		"WATCH OUT!",
 		"Whoa, chill out!",
 	},
-	// {
-	// 	"shouting gibberish",
-	// 	"FCECDFCAAB",
-	// 	"Whoa, chill out!",
-	// },
-	// {
-	// 	"asking a question",
-	// 	"Does this cryogenic chamber make me look fat?",
-	// 	"Sure.",
-	// },
-	// {
-	// 	"asking a numeric question",
-	// 	"You are, what, like 15?",
-	// 	"Sure.",
-	// },
-	// {
-	// 	"asking gibberish",
-	// 	"fffbbcbeab?",
-	// 	"Sure.",
-	// },
-	// {
-	// 	"talking forcefully",
-	// 	"Hi there!",
-	// 	"Whatever.",
-	// },
-	// {
-	// 	"using acronyms in regular speech",
-	// 	"It's OK if you don't want to go to the DMV.",
-	// 	"Whatever.",
-	// },
-	// {
-	// 	"forceful question",
-	// 	"WHAT'S GOING ON?",
-	// 	"Calm down, I know what I'm doing!",
-	// },
-	// {
-// 		"shouting numbers",
-// 		"1, 2, 3 GO!",
-// 		"Whoa, chill out!",
-// 	},
-// 	{
+	{
+		"shouting gibberish",
+		"FCECDFCAAB",
+		"Whoa, chill out!",
+	},
+	{
+		"asking a question",
+		"Does this cryogenic chamber make me look fat?",
+		"Sure.",
+	},
+	{
+		"asking a numeric question",
+		"You are, what, like 15?",
+		"Sure.",
+	},
+	{
+		"asking gibberish",
+		"fffbbcbeab?",
+		"Sure.",
+	},
+	{
+		"talking forcefully",
+		"Hi there!",
+		"Whatever.",
+	},
+	{
+		"using acronyms in regular speech",
+		"It's OK if you don't want to go to the DMV.",
+		"Whatever.",
+	},
+	{
+		"forceful question",
+		"WHAT'S GOING ON?",
+		"Calm down, I know what I'm doing!",
+	},
+	{
+		"shouting numbers",
+		"1, 2, 3 GO!",
+		"Whoa, chill out!",
+	},
+//	{
 // 		"no letters",
 // 		"1, 2, 3",
 // 		"Whatever.",
