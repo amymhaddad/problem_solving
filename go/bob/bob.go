@@ -13,14 +13,19 @@ import (
 func shouting(remark string) bool {
 	match := regexp.MustCompile("[A-Z]+")
 	words := match.FindAllString(remark, -1)
+	splitRemark := strings.Fields(remark)
 
-	matchedWords := strings.Join(words, " ")
-	return len(remark) == len(matchedWords)
+	return len(words) == len(splitRemark)
 }
 
 func Hey(remark string) string {
-		
-
-	return "Whatever."
+	//print("remark: ", shouting(remark))
+	switch {
+	case shouting(remark):
+		print("shout")
+		return "Whoa, chill out!"
+	default:
+		return "Whatever."
+	}
 
 }
