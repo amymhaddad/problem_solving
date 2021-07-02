@@ -7,15 +7,14 @@ import (
 
 // Return the acronym of a given phrase
 func Abbreviate(s string) string {
-	match := regexp.MustCompile("[A-Za-z]+'?[A-Za-z]*")
-	words := match.FindAllString(s, -1)
+	acronymMatches := regexp.MustCompile("[A-Z]+'?[A-Z]*")
+	words := acronymMatches.FindAllString(strings.ToUpper(s), -1)
 
-	var acronym = []string{}
+	var abbreviations []byte
 
 	for _, word := range words {
-		firstLetter := string(word[0])
-		capitalLetter := strings.Title(strings.ToLower(firstLetter))
-		acronym = append(acronym, capitalLetter)
+		firstLetter := word[0]
+		abbreviations = append(abbreviations, firstLetter)
 	}
-	return strings.Join(acronym, "")
+	return string(abbreviations)
 }
