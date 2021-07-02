@@ -59,36 +59,36 @@ var testCases = []struct {
 		"1, 2, 3 GO!",
 		"Whoa, chill out!",
 	},
-//	{
-// 		"no letters",
-// 		"1, 2, 3",
-// 		"Whatever.",
-// 	},
-// 	{
-// 		"question with no letters",
-// 		"4?",
-// 		"Sure.",
-// 	},
-// 	{
-// 		"shouting with special characters",
-// 		"ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!",
-// 		"Whoa, chill out!",
-// 	},
-// 	{
-// 		"shouting with no exclamation mark",
-// 		"I HATE THE DMV",
-// 		"Whoa, chill out!",
-// 	},
-// 	{
-// 		"statement containing question mark",
-// 		"Ending with ? means a question.",
-// 		"Whatever.",
-// 	},
-// 	{
-// 		"non-letters with question",
-// 		":) ?",
-// 		"Sure.",
-// 	},
+	// {
+	// 	"no letters",
+	// 	"1, 2, 3",
+	// 	"Whatever.",
+	// },
+	{
+		"question with no letters",
+		"4?",
+		"Sure.",
+	},
+	// {
+	// 	"shouting with special characters",
+	// 	"ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!",
+	// 	"Whoa, chill out!",
+	// },
+	// {
+	// 	"shouting with no exclamation mark",
+	// 	"I HATE THE DMV",
+	// 	"Whoa, chill out!",
+	// },
+	// {
+	// 	"statement containing question mark",
+	// 	"Ending with ? means a question.",
+	// 	"Whatever.",
+	// },
+	// {
+	// 	"non-letters with question",
+	// 	":) ?",
+	// 	"Sure.",
+	// },
 // 	{
 // 		"prattling on",
 // 		"Wait! Hang on. Are you going to be OK?",

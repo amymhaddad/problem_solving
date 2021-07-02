@@ -2,34 +2,48 @@
 package bob
 
 import (
+	//	"fmt"
 	"regexp"
-	"strings"
+	//"strings"
 )
 
 // Receive a string that contains a phrase or sentence and return a string that
 // responds to the given phrase or sentence
-
 func shout(remark string) bool {
-	match := regexp.MustCompile("[A-Z]+'?[A-Z]*")
-	words := match.FindAllString(remark, -1)
-	splitRemark := strings.Fields(remark)
-
-
-	return len(words) == len(splitRemark)
+	found, _ := regexp.MatchString("[a-z]+", remark)
+	return !found
 }
 
+func containsNumbers(remark string) bool {
+	found , _ := regexp.MatchString("[0-9]+", remark)
+	return found
+}
+
+func containsLetters(remark string) bool {
+
+	found, _ := regexp.MatchString("[a-z]+", remark)
+	return found
+}
+
+
 func askQuestion(remark string) bool {
-	return strings.ContainsAny(remark, "?")
+	//option 1 - use regex 
+	found, _ := regexp.MatchString("\\?$", remark)
+	return found
+	// question := fmt.Sprintf("%s", string(len(remark) -1))  == "?"
+	// return question
+    //
+//	return string(len(remark) -1) == "?"
 }
 
 func Hey(remark string) string {
 	switch {
 	case askQuestion(remark) && shout(remark):
 		return "Calm down, I know what I'm doing!"
-	case shout(remark):
-		return "Whoa, chill out!"
-	case askQuestion(remark):
+	case askQuestion(remark) || askQuestion(remark) && containsNumbers(remark):
 		return "Sure."
+	case shout(remark) || shout(remark) && containsNumbers(remark):
+		return "Whoa, chill out!"
 	default:
 		return "Whatever."
 	}
