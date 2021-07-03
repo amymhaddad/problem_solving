@@ -69,11 +69,11 @@ var testCases = []struct {
 		"4?",
 		"Sure.",
 	},
-	// {
-	// 	"shouting with special characters",
-	// 	"ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!",
-	// 	"Whoa, chill out!",
-	// },
+	{
+		"shouting with special characters",
+		"ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!",
+		"Whoa, chill out!",
+	},
 	// {
 	// 	"shouting with no exclamation mark",
 	// 	"I HATE THE DMV",

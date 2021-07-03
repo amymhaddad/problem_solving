@@ -11,7 +11,7 @@ import (
 // responds to the given phrase or sentence
 func shout(remark string) bool {
 	found, _ := regexp.MatchString("[a-z]+", remark)
-	return !found
+	return !found && containsLetters(remark)
 }
 
 func containsNumbers(remark string) bool {
@@ -21,7 +21,7 @@ func containsNumbers(remark string) bool {
 
 func containsLetters(remark string) bool {
 
-	found, _ := regexp.MatchString("[a-z]+", remark)
+	found, _ := regexp.MatchString("[A-Z]+", remark)
 	return found
 }
 
