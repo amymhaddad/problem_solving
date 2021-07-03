@@ -2,7 +2,6 @@
 package bob
 
 import (
-	//	"fmt"
 	"regexp"
 	"strings"
 )
@@ -10,37 +9,26 @@ import (
 // Receive a string that contains a phrase or sentence and return a string that
 // responds to the given phrase or sentence
 func shout(remark string) bool {
-	found, _ := regexp.MatchString("[a-z]+", remark)
-	return !found && containsLetters(remark)
+	containLowercaseLetters, _ := regexp.MatchString("[a-z]+", remark)
+	containUppercaseLetters, _ := regexp.MatchString("[A-Z]+", remark)
+
+	return !containLowercaseLetters && containUppercaseLetters
 }
 
 func containsNumbers(remark string) bool {
-	found , _ := regexp.MatchString("[0-9]+", remark)
+	found, _ := regexp.MatchString("[0-9]+", remark)
+
 	return found
 }
-
-func containsLetters(remark string) bool {
-	found, _ := regexp.MatchString("[A-Z]+", remark)
-	return found
-}
-
 
 func silence(remark string) bool {
-	trimmedRemark := strings.TrimSpace(remark)
-	return trimmedRemark == ""
-	//return !containsLetters(remark) && !containsNumbers(remark)
+	return strings.TrimSpace(remark) == ""
 }
 
-
 func askQuestion(remark string) bool {
-	//option 1 - use regex 
-	trimmedRemark := strings.TrimSpace(remark)
-	found, _ := regexp.MatchString("\\?$", trimmedRemark)
+	found, _ := regexp.MatchString("\\?$", strings.TrimSpace(remark))
+
 	return found
-	// question := fmt.Sprintf("%s", string(len(remark) -1))  == "?"
-	// return question
-    //
-//	return string(len(remark) -1) == "?"
 }
 
 func Hey(remark string) string {
@@ -51,10 +39,9 @@ func Hey(remark string) string {
 		return "Sure."
 	case shout(remark) || shout(remark) && containsNumbers(remark):
 		return "Whoa, chill out!"
-	case silence(remark) && !containsLetters(remark):
+	case silence(remark):
 		return "Fine. Be that way!"
 	default:
 		return "Whatever."
 	}
-
 }

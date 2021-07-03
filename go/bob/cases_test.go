@@ -59,11 +59,11 @@ var testCases = []struct {
 		"1, 2, 3 GO!",
 		"Whoa, chill out!",
 	},
-	// {
-	// 	"no letters",
-	// 	"1, 2, 3",
-	// 	"Whatever.",
-	// },
+	{
+		"no letters",
+		"1, 2, 3",
+		"Whatever.",
+	},
 	{
 		"question with no letters",
 		"4?",
