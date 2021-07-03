@@ -109,29 +109,29 @@ var testCases = []struct {
 		"\t\t\t\t\t\t\t\t\t\t",
 		"Fine. Be that way!",
 	},
-// 	{
-// 		"multiple line question",
-// 		"\nDoes this cryogenic chamber make me look fat?\nNo.",
-// 		"Whatever.",
-// 	},
-// 	{
-// 		"starting with whitespace",
-// 		"         hmmmmmmm...",
-// 		"Whatever.",
-// 	},
-// 	{
-// 		"ending with whitespace",
-// 		"Okay if like my  spacebar  quite a bit?   ",
-// 		"Sure.",
-// 	},
-// 	{
-// 		"other whitespace",
-// 		"\n\r \t",
-// 		"Fine. Be that way!",
-// 	},
-// 	{
-// 		"non-question ending with whitespace",
-// 		"This is a statement ending with whitespace      ",
-// 		"Whatever.",
-// 	},
+	{
+		"multiple line question",
+		"\nDoes this cryogenic chamber make me look fat?\nNo.",
+		"Whatever.",
+	},
+	{
+		"starting with whitespace",
+		"         hmmmmmmm...",
+		"Whatever.",
+	},
+	{
+		"ending with whitespace",
+		"Okay if like my  spacebar  quite a bit?   ",
+		"Sure.",
+	},
+	{
+		"other whitespace",
+		"\n\r \t",
+		"Fine. Be that way!",
+	},
+	{
+		"non-question ending with whitespace",
+		"This is a statement ending with whitespace      ",
+		"Whatever.",
+	},
 }

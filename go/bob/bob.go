@@ -4,7 +4,7 @@ package bob
 import (
 	//	"fmt"
 	"regexp"
-	//"strings"
+	"strings"
 )
 
 // Receive a string that contains a phrase or sentence and return a string that
@@ -26,13 +26,16 @@ func containsLetters(remark string) bool {
 
 
 func silence(remark string) bool {
-	return !containsLetters(remark) && !containsNumbers(remark)
+	trimmedRemark := strings.TrimSpace(remark)
+	return trimmedRemark == ""
+	//return !containsLetters(remark) && !containsNumbers(remark)
 }
 
 
 func askQuestion(remark string) bool {
 	//option 1 - use regex 
-	found, _ := regexp.MatchString("\\?$", remark)
+	trimmedRemark := strings.TrimSpace(remark)
+	found, _ := regexp.MatchString("\\?$", trimmedRemark)
 	return found
 	// question := fmt.Sprintf("%s", string(len(remark) -1))  == "?"
 	// return question
@@ -48,7 +51,7 @@ func Hey(remark string) string {
 		return "Sure."
 	case shout(remark) || shout(remark) && containsNumbers(remark):
 		return "Whoa, chill out!"
-	case silence(remark):
+	case silence(remark) && !containsLetters(remark):
 		return "Fine. Be that way!"
 	default:
 		return "Whatever."
