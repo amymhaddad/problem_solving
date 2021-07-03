@@ -20,9 +20,13 @@ func containsNumbers(remark string) bool {
 }
 
 func containsLetters(remark string) bool {
-
 	found, _ := regexp.MatchString("[A-Z]+", remark)
 	return found
+}
+
+
+func silence(remark string) bool {
+	return !containsLetters(remark) && !containsNumbers(remark)
 }
 
 
@@ -44,6 +48,8 @@ func Hey(remark string) string {
 		return "Sure."
 	case shout(remark) || shout(remark) && containsNumbers(remark):
 		return "Whoa, chill out!"
+	case silence(remark):
+		return "Fine. Be that way!"
 	default:
 		return "Whatever."
 	}

@@ -74,41 +74,41 @@ var testCases = []struct {
 		"ZOMG THE %^*@#$(*^ ZOMBIES ARE COMING!!11!!1!",
 		"Whoa, chill out!",
 	},
-	// {
-	// 	"shouting with no exclamation mark",
-	// 	"I HATE THE DMV",
-	// 	"Whoa, chill out!",
-	// },
-	// {
-	// 	"statement containing question mark",
-	// 	"Ending with ? means a question.",
-	// 	"Whatever.",
-	// },
-	// {
-	// 	"non-letters with question",
-	// 	":) ?",
-	// 	"Sure.",
-	// },
-// 	{
-// 		"prattling on",
-// 		"Wait! Hang on. Are you going to be OK?",
-// 		"Sure.",
-// 	},
-// 	{
-// 		"silence",
-// 		"",
-// 		"Fine. Be that way!",
-// 	},
-// 	{
-// 		"prolonged silence",
-// 		"          ",
-// 		"Fine. Be that way!",
-// 	},
-// 	{
-// 		"alternate silence",
-// 		"\t\t\t\t\t\t\t\t\t\t",
-// 		"Fine. Be that way!",
-// 	},
+	{
+		"shouting with no exclamation mark",
+		"I HATE THE DMV",
+		"Whoa, chill out!",
+	},
+	{
+		"statement containing question mark",
+		"Ending with ? means a question.",
+		"Whatever.",
+	},
+	{
+		"non-letters with question",
+		":) ?",
+		"Sure.",
+	},
+	{
+		"prattling on",
+		"Wait! Hang on. Are you going to be OK?",
+		"Sure.",
+	},
+	{
+		"silence",
+		"",
+		"Fine. Be that way!",
+	},
+	{
+		"prolonged silence",
+		"          ",
+		"Fine. Be that way!",
+	},
+	{
+		"alternate silence",
+		"\t\t\t\t\t\t\t\t\t\t",
+		"Fine. Be that way!",
+	},
 // 	{
 // 		"multiple line question",
 // 		"\nDoes this cryogenic chamber make me look fat?\nNo.",
