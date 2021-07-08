@@ -28,24 +28,24 @@ var testCases = []struct {
 		1,
 		false,
 	},
-	// 	{ // long identical strands
-	// 		"GGACTGAAATCTG",
-	// 		"GGACTGAAATCTG",
-	// 		0,
-	// 		false,
-	// 	},
-	// 	{ // long different strands
-	// 		"GGACGGATTCTG",
-	// 		"AGGACGGATTCT",
-	// 		9,
-	// 		false,
-	// 	},
-	// 	{ // disallow first strand longer
-	// 		"AATG",
-	// 		"AAA",
-	// 		0,
-	// 		true,
-	// 	},
+	{ // long identical strands
+		"GGACTGAAATCTG",
+		"GGACTGAAATCTG",
+		0,
+		false,
+	},
+	{ // long different strands
+		"GGACGGATTCTG",
+		"AGGACGGATTCT",
+		9,
+		false,
+	},
+	{ // disallow first strand longer
+		"AATG",
+		"AAA",
+		0,
+		true,
+	},
 	// 	{ // disallow second strand longer
 	// 		"ATA",
 	// 		"AGTG",
