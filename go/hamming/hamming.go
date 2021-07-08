@@ -11,11 +11,8 @@ func Distance(a, b string) (int, error) {
 		return count, errors.New("The strands must be equal length.")
 	}
 
-	strand1 := []byte(a)
-	strand2 := []byte(b)
-
 	for i := 0; i < len(a); i++ {
-		if strand1[i] != strand2[i] {
+		if a[i] != b[i] {
 			count += 1
 		}
 	}
