@@ -3,20 +3,19 @@ package hamming
 
 import "errors"
 
-//Count the differences between two strings
-func Distance(s1, s2 string) (int, error) {
-
+//Count the differences between two strands
+func Distance(a, b string) (int, error) {
 	var count int
 
-	if len(s1) != len(s2) {
+	if len(a) != len(b) {
 		return count, errors.New("The strands must be equal length.")
 	}
 
-	b1 := []byte(s1)
-	b2 := []byte(s2)
+	strand1 := []byte(a)
+	strand2 := []byte(b)
 
-	for i := 0; i < len(s1); i++ {
-		if b1[i] != b2[i] {
+	for i := 0; i < len(a); i++ {
+		if strand1[i] != strand2[i] {
 			count += 1
 		}
 	}

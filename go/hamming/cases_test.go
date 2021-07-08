@@ -46,22 +46,22 @@ var testCases = []struct {
 		0,
 		true,
 	},
-	// 	{ // disallow second strand longer
-	// 		"ATA",
-	// 		"AGTG",
-	// 		0,
-	// 		true,
-	// 	},
-	// 	{ // disallow left empty strand
-	// 		"",
-	// 		"G",
-	// 		0,
-	// 		true,
-	// 	},
-	// 	{ // disallow right empty strand
-	// 		"G",
-	// 		"",
-	// 		0,
-	// 		true,
-	// 	},
+	{ // disallow second strand longer
+		"ATA",
+		"AGTG",
+		0,
+		true,
+	},
+	{ // disallow left empty strand
+		"",
+		"G",
+		0,
+		true,
+	},
+	{ // disallow right empty strand
+		"G",
+		"",
+		0,
+		true,
+	},
 }
