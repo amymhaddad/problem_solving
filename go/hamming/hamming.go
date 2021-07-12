@@ -8,7 +8,7 @@ func Distance(a, b string) (int, error) {
 	var count int
 
 	if len(a) != len(b) {
-		return count, errors.New("The strands must be equal length.")
+		return count, errors.New("the strands must be equal length")
 	}
 
 	for i := 0; i < len(a); i++ {
