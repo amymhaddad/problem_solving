@@ -6,13 +6,6 @@ func IsLeapYear(year int) bool {
 	divByOneHundred := year%100 == 0
 	divByFourHundred := year%400 == 0
 
-	switch {
-	case !divByFour:
-		return false
-	case divByFour && divByOneHundred && !divByFourHundred:
-		return false
-	default:
-		return true
-	}
+	return divByFourHundred || divByFour && !divByOneHundred
 
 }
