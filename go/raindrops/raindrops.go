@@ -1,7 +1,6 @@
-package main
+package raindrops
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -27,9 +26,10 @@ func Raindrops(num int) string {
 	}
 
 	return strings.Join(raindropSounds, "")
-}
-
-func main() {
-	fmt.Println(Raindrops(35))
 
 }
+
+// func main() {
+// 	fmt.Println(Raindrops(1))
+
+// }
