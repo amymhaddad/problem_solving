@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-//Raindrops converts a number into a string of raindrop sounds
-func Raindrops(num int) string {
+// Convert converts a number into a string of raindrop sounds
+func Convert(num int) string {
 	sounds := map[int]string{
 		3: "Pling",
 		5: "Plang",
@@ -28,8 +28,3 @@ func Raindrops(num int) string {
 	return strings.Join(raindropSounds, "")
 
 }
-
-// func main() {
-// 	fmt.Println(Raindrops(1))
-
-// }
