@@ -13,22 +13,9 @@ func Age(seconds float64, planet Planet) float64 {
 		"Mercury": 0.2408467,
 	}
 
-	for name, orbitalPeriod := range planetOrbitalPeriod {
-		switch name {
-		case "Mercury":
-			return calculation(seconds, orbitalPeriod)
-		default:
-			return onEarth(seconds)
-		}
+	orbitPeriod, ok := planetOrbitalPeriod[planet]
+	if !ok {
+		return seconds / earthSeconds
 	}
-	//why do I need another return when I have multi returns in the for loop?
-	//	return onEarth(seconds)
-}
-
-func onEarth(seconds float64) float64 {
-	return seconds / earthSeconds
-}
-
-func calculation(seconds float64, orbitalPeriod float64) float64 {
-	return seconds / (orbitalPeriod * earthSeconds)
+	return seconds / (orbitPeriod * earthSeconds)
 }
