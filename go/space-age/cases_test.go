@@ -16,12 +16,12 @@ var testCases = []struct {
 		seconds:     1000000000,
 		expected:    31.69,
 	},
-	// {
-	// 	description: "age on Mercury",
-	// 	planet:      "Mercury",
-	// 	seconds:     2134835688,
-	// 	expected:    280.88,
-	// },
+	{
+		description: "age on Mercury",
+		planet:      "Mercury",
+		seconds:     2134835688,
+		expected:    280.88,
+	},
 	// {
 	// 	description: "age on Venus",
 	// 	planet:      "Venus",
