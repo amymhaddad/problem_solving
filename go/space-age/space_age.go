@@ -1,7 +1,5 @@
 package space
 
-//using a type Planet here to be specific -- I want a planet: Mars, Earth, etc
-//also use for temperatures (F or C) and time
 //Planet is the planet name
 type Planet string
 
@@ -17,11 +15,11 @@ func Age(seconds float64, planet Planet) float64 {
 		"Saturn":  29.447498,
 		"Uranus":  84.016846,
 		"Neptune": 164.79132,
+		"Earth":   1.0,
 	}
 
-	orbitPeriod, ok := planetOrbitalPeriod[planet]
-	if !ok {
-		return seconds / earthSeconds
-	}
+	orbitPeriod, _ := planetOrbitalPeriod[planet]
+
 	return seconds / (orbitPeriod * earthSeconds)
+
 }
