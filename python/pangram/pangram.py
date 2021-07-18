@@ -55,17 +55,18 @@ from string import ascii_lowercase as lowercase_letters
 
 
 def is_pangram(sentence):
-    total_letters = 0
 
-    # x = 0b11111111111111111111111111
+    actual_bits = 0
+
+    expected_bits = 0b11111111111111111111111111
 
     for i, char in enumerate(sentence):
         if char.isalpha():
             letter_index = ord(char.lower()) - ord("a")
             letter_position = 1 << letter_index
-            total_letters = total_letters | letter_position
+            actual_bits = actual_bits | letter_position
 
-    return 2 ** len(lowercase_letters) - 1 == total_letters
+    return expected_bits == actual_bits
 
 
 # Approach 4 - Sol 1
