@@ -2,7 +2,14 @@ package accumulate
 
 type converter func(string) string
 
-func Accumulate(collection []string, fn converter) []string{
+//Accumulate applies a function to a collection
+func Accumulate(collection []string, fn converter) []string {
 
-	return ["hello", "world"]
+	updatedCollection := []string{}
+	for _, item := range collection {
+		updatedItem := fn(item)
+		updatedCollection = append(updatedCollection, updatedItem)
+	}
+	return updatedCollection
+
 }
