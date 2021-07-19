@@ -5,19 +5,21 @@ import (
 	"strings"
 )
 
+var sounds = map[int]string{
+	3: "Pling",
+	5: "Plang",
+	7: "Plong",
+}
+
 // Convert converts a number into a string of raindrop sounds
 func Convert(num int) string {
-	sounds := map[int]string{
-		3: "Pling",
-		5: "Plang",
-		7: "Plong",
-	}
+	factors := []int{3, 5, 7}
 
 	var raindropSounds []string
 
-	for factor, sound := range sounds {
+	for _, factor := range factors {
 		if num%factor == 0 {
-			raindropSounds = append(raindropSounds, sound)
+			raindropSounds = append(raindropSounds, sounds[factor])
 		}
 	}
 
