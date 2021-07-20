@@ -2,7 +2,6 @@ package raindrops
 
 import (
 	"strconv"
-	"strings"
 )
 
 var sounds = map[int]string{
@@ -15,11 +14,11 @@ var sounds = map[int]string{
 func Convert(num int) string {
 	factors := []int{3, 5, 7}
 
-	var raindropSounds []string
+	var raindropSounds string
 
 	for _, factor := range factors {
 		if num%factor == 0 {
-			raindropSounds = append(raindropSounds, sounds[factor])
+			raindropSounds += sounds[factor]
 		}
 	}
 
@@ -27,6 +26,6 @@ func Convert(num int) string {
 		return strconv.Itoa(num)
 	}
 
-	return strings.Join(raindropSounds, "")
+	return raindropSounds
 
 }
