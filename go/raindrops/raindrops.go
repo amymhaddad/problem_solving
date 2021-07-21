@@ -4,22 +4,20 @@ import (
 	"strconv"
 )
 
-var sounds = map[int]string{
-	3: "Pling",
-	5: "Plang",
-	7: "Plong",
-}
-
 // Convert converts a number into a string of raindrop sounds
 func Convert(num int) string {
-	factors := []int{3, 5, 7}
-
 	var raindropSounds string
 
-	for _, factor := range factors {
-		if num%factor == 0 {
-			raindropSounds += sounds[factor]
-		}
+	if num%3 == 0 {
+		raindropSounds += "Pling"
+	}
+
+	if num%5 == 0 {
+		raindropSounds += "Plang"
+	}
+
+	if num%7 == 0 {
+		raindropSounds += "Plong"
 	}
 
 	if len(raindropSounds) == 0 {
