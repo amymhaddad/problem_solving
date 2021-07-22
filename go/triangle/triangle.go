@@ -16,32 +16,34 @@ const (
 
 // KindFromSides returns the kind of triangle
 func KindFromSides(a, b, c float64) Kind {
-	validTriangle := twoSidesLargerThanThird(a, b, c)
+	validTriangle := containsCorrectLengths(a, b, c) && containsTriangleEquality(a, b, c)
 }
 
 func containsCorrectLengths(a, b, c float64) bool {
 	return a >= 0 && b >= 0 && c >= 0
 }
 
-func twoSidesLargerThanThird(a, b, c float64) bool {
-	//add length to this slice?
-	sides := []float64{a, b, c}
+func containsTriangleEquality(a, b, c float64) bool {
 
-	count := 0
+	isValid := true
 
-	for count < 3 {
-		s1 := 0
-		s2 := 1
-		s3 := 2
+	arr := []float64{3, 4, 5}
 
-		if sides[s1]+sides[s2] < sides[s3] || sides[s1]+sides[s3] < sides[s2] {
-			return false
-		}
-
-		firstNum := sides[0]
-		sides = sides[1:]
-		sides = append(sides, firstNum)
+	if arr[0]+arr[1] < arr[2] {
+		isValid = false
 	}
-	return true
+
+	if arr[0]+arr[2] < arr[1] {
+		isValid = false
+	}
+
+	if arr[1]+arr[2] < arr[0] {
+		isValid = false
+	}
+
+	if arr[2]+arr[1] < arr[0] {
+		isValid = false
+	}
+	return isValid
 
 }
