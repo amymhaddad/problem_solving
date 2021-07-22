@@ -1,5 +1,7 @@
 package triangle
 
+import "fmt"
+
 // Kind indicates the kind of triangle
 type Kind string
 
@@ -17,6 +19,32 @@ const (
 // KindFromSides returns the kind of triangle
 func KindFromSides(a, b, c float64) Kind {
 	validTriangle := containsCorrectLengths(a, b, c) && containsTriangleEquality(a, b, c)
+
+	if !validTriangle {
+
+		return "NaT"
+	}
+
+	allSides := []float64{a, b, c}
+	matches := map[float64]bool{}
+
+	for _, side := range allSides {
+		fmt.Printf("\n%T SIDE: ", side)
+		matches[side] = true
+	}
+
+	uniqueSides := len(matches)
+	//fmt.Println("\nUNIQUE: ", uniqueSides)
+	switch uniqueSides {
+	case 3:
+		return Sca
+	case 2:
+		return Iso
+	default:
+		return Equ
+
+	}
+
 }
 
 func containsCorrectLengths(a, b, c float64) bool {
