@@ -8,33 +8,28 @@ import (
 type Kind string
 
 const (
-	//NaT contains sides that don't form a triangle
-	NaT = "NaT" // not a triangle
-	//Equ indicates an equilateral triangle (three sides of the same lenth)
+	NaT = "NaT"
 	Equ = "Equ"
-	//Iso indicates an isosceles triangle (two sides of the same length)
 	Iso = "Iso"
-	//Sca indicates a scalene triangle (three different side lengths)
 	Sca = "Sca"
 )
 
 // KindFromSides returns the kind of triangle
 func KindFromSides(a, b, c float64) Kind {
-	validTriangle := containsCorrectLengths(a, b, c) && containsTriangleEquality(a, b, c)
-	validNumbers := containsValidNumbers(a, b, c)
+	validTriangle := containsCorrectLengths(a, b, c) && containsTriangleEquality(a, b, c) && containsValidNumbers(a, b, c)
 
-	if !validTriangle || !validNumbers {
+	if !validTriangle {
 		return "NaT"
 	}
 
-	allSides := []float64{a, b, c}
-	matches := map[float64]bool{}
+	triangleSides := []float64{a, b, c}
+	allSides := map[float64]bool{}
 
-	for _, side := range allSides {
-		matches[side] = true
+	for _, side := range triangleSides {
+		allSides[side] = true
 	}
 
-	uniqueSides := len(matches)
+	uniqueSides := len(allSides)
 	switch uniqueSides {
 	case 3:
 		return Sca
@@ -42,18 +37,14 @@ func KindFromSides(a, b, c float64) Kind {
 		return Iso
 	default:
 		return Equ
-
 	}
-
 }
 
 func containsValidNumbers(a, b, c float64) bool {
 	nums := []float64{a, b, c}
 
 	for i := range nums {
-		isInf := math.IsInf(nums[i], 0)
-		nAn := math.IsNaN(nums[i])
-		if isInf || nAn {
+		if math.IsInf(nums[i], 0) || math.IsNaN(nums[i]) {
 			return false
 		}
 	}
@@ -66,20 +57,20 @@ func containsCorrectLengths(a, b, c float64) bool {
 }
 
 func containsTriangleEquality(a, b, c float64) bool {
-
 	isValid := true
 
-	arr := []float64{a, b, c}
+	sides := []float64{a, b, c}
 
-	if arr[0]+arr[1] < arr[2] {
+	if sides[0]+sides[1] < sides[2] {
 		isValid = false
-	} else if arr[0]+arr[2] < arr[1] {
+	} else if sides[0]+sides[2] < sides[1] {
 		isValid = false
-	} else if arr[1]+arr[2] < arr[0] {
+	} else if sides[1]+sides[2] < sides[0] {
 		isValid = false
-	} else if arr[2]+arr[1] < arr[0] {
+	} else if sides[2]+sides[1] < sides[0] {
 		isValid = false
 	}
+
 	return isValid
 
 }

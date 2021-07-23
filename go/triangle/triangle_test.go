@@ -29,8 +29,8 @@ var testData = []testCase{
 	{NaT, 0, 0, 0},    // zero length
 	{NaT, 3, 4, -5},   // negative length
 	{NaT, 1, 1, 3},    // fails triangle inequality
-	// {NaT, 2, 5, 2},    // another
-	// {NaT, 7, 3, 2},    // another
+	{NaT, 2, 5, 2},    // another
+	{NaT, 7, 3, 2},    // another
 }
 
 // generate cases with NaN and Infs, append to basic cases
