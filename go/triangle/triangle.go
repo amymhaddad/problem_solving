@@ -16,61 +16,95 @@ const (
 
 // KindFromSides returns the kind of triangle
 func KindFromSides(a, b, c float64) Kind {
-	validTriangle := containsCorrectLengths(a, b, c) && containsTriangleEquality(a, b, c) && containsValidNumbers(a, b, c)
-
-	if !validTriangle {
-		return "NaT"
+	if !ValidTriangle(a, b, c) {
+		return NaT
 	}
 
-	triangleSides := []float64{a, b, c}
-	allSides := map[float64]bool{}
-
-	for _, side := range triangleSides {
-		allSides[side] = true
-	}
-
-	uniqueSides := len(allSides)
-	switch uniqueSides {
-	case 3:
-		return Sca
-	case 2:
+	switch {
+	case a == b && b == c:
+		return Equ
+	case a == b || b == c || a == c:
 		return Iso
 	default:
-		return Equ
+		return Sca
 	}
+
 }
 
-func containsValidNumbers(a, b, c float64) bool {
-	nums := []float64{a, b, c}
+func ValidTriangle(a, b, c float64) bool {
 
-	for i := range nums {
-		if math.IsInf(nums[i], 0) || math.IsNaN(nums[i]) {
-			return false
-		}
+	if math.IsNaN(a+b+c) || math.IsInf(a+b+c, 0) {
+		return false
+	}
+
+	if a <= 0 || b <= 0 || c <= 0 {
+		return false
+	}
+
+	if a+b < c || b+c < a || c+a < b {
+		return false
 	}
 
 	return true
 }
 
-func containsCorrectLengths(a, b, c float64) bool {
-	return a > 0 && b > 0 && c > 0
-}
+// // KindFromSides returns the kind of triangle
+// func KindFromSides(a, b, c float64) Kind {
+// 	validTriangle := containsCorrectLengths(a, b, c) && containsTriangleEquality(a, b, c) && containsValidNumbers(a, b, c)
 
-func containsTriangleEquality(a, b, c float64) bool {
-	isValid := true
+// 	if !validTriangle {
+// 		return "NaT"
+// 	}
 
-	sides := []float64{a, b, c}
+// 	triangleSides := []float64{a, b, c}
+// 	allSides := map[float64]bool{}
 
-	if sides[0]+sides[1] < sides[2] {
-		isValid = false
-	} else if sides[0]+sides[2] < sides[1] {
-		isValid = false
-	} else if sides[1]+sides[2] < sides[0] {
-		isValid = false
-	} else if sides[2]+sides[1] < sides[0] {
-		isValid = false
-	}
+// 	for _, side := range triangleSides {
+// 		allSides[side] = true
+// 	}
 
-	return isValid
+// 	uniqueSides := len(allSides)
+// 	switch uniqueSides {
+// 	case 3:
+// 		return Sca
+// 	case 2:
+// 		return Iso
+// 	default:
+// 		return Equ
+// 	}
+// }
 
-}
+// func containsValidNumbers(a, b, c float64) bool {
+// 	nums := []float64{a, b, c}
+
+// 	for i := range nums {
+// 		if math.IsInf(nums[i], 0) || math.IsNaN(nums[i]) {
+// 			return false
+// 		}
+// 	}
+
+// 	return true
+// }
+
+// func containsCorrectLengths(a, b, c float64) bool {
+// 	return a > 0 && b > 0 && c > 0
+// }
+
+// func containsTriangleEquality(a, b, c float64) bool {
+// 	isValid := true
+
+// 	sides := []float64{a, b, c}
+
+// 	if sides[0]+sides[1] < sides[2] {
+// 		isValid = false
+// 	} else if sides[0]+sides[2] < sides[1] {
+// 		isValid = false
+// 	} else if sides[1]+sides[2] < sides[0] {
+// 		isValid = false
+// 	} else if sides[2]+sides[1] < sides[0] {
+// 		isValid = false
+// 	}
+
+// 	return isValid
+
+// }
