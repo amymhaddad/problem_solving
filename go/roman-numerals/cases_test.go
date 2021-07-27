@@ -12,8 +12,8 @@ type romanNumeralTest struct {
 
 var romanNumeralTests = []romanNumeralTest{
 	{1, "I", false},
-	// {2, "II", false},
-	// {3, "III", false},
+	{2, "II", false},
+	{3, "III", false},
 	// {4, "IV", false},
 	// {5, "V", false},
 	// {6, "VI", false},

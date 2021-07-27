@@ -20,5 +20,18 @@ func ToRomanNumeral(num int) (string, error) {
 		return "", errors.New("Invalid Arabic number")
 	}
 
+	if num < 4 {
+		return underFour(num), nil
+	}
+
 	return arabicToRoman[num], nil
+}
+
+func underFour(num int) string {
+	result := ""
+	for i := 0; i < num; i++ {
+		result += arabicToRoman[1]
+	}
+
+	return result
 }
