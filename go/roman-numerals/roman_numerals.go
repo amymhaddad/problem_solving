@@ -16,15 +16,21 @@ var arabicToRoman = map[int]string{
 func ToRomanNumeral(num int) (string, error) {
 	invalidArabicNumber := num <= 0 || num > 3000
 
-	if invalidArabicNumber {
+	switch {
+	case invalidArabicNumber:
 		return "", errors.New("Invalid Arabic number")
-	}
-
-	if num < 4 {
+	case num < 5:
 		return underFour(num), nil
-	}
 
-	return arabicToRoman[num], nil
+	case num > 5 && num < 10:
+		return underTen(num), nil
+
+	case num > 10 && num < 50:
+		return underFifty(num), nil
+
+	default:
+		return arabicToRoman[num], nil
+	}
 }
 
 func underFour(num int) string {
@@ -33,5 +39,20 @@ func underFour(num int) string {
 		result += arabicToRoman[1]
 	}
 
+	if len(result) == 4 {
+		return "IV"
+	}
+
 	return result
+}
+
+func underTen(num int) string {
+	if 10-num == 1 {
+		return "IX"
+	}
+	return "VI"
+}
+
+func underFifty(num int) string {
+
 }
