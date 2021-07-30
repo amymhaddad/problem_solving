@@ -29,21 +29,21 @@ var testCases = []struct {
 		input:       "zzyzx",
 		expected:    false,
 	},
-	// {
-	// 	description: "longest reported english isogram",
-	// 	input:       "subdermatoglyphic",
-	// 	expected:    true,
-	// },
+	{
+		description: "longest reported english isogram",
+		input:       "subdermatoglyphic",
+		expected:    true,
+	},
 	{
 		description: "word with duplicated character in mixed case",
 		input:       "Alphabet",
 		expected:    false,
 	},
-	// {
-	// 	description: "word with duplicated character in mixed case, lowercase first",
-	// 	input:       "alphAbet",
-	// 	expected:    false,
-	// },
+	{
+		description: "word with duplicated character in mixed case, lowercase first",
+		input:       "alphAbet",
+		expected:    false,
+	},
 	// {
 	// 	description: "hypothetical isogrammic word with hyphen",
 	// 	input:       "thumbscrew-japingly",
