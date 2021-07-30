@@ -8,11 +8,19 @@ var letters = make(map[rune]bool)
 func IsIsogram(phrase string) bool {
 
 	for _, char := range strings.ToLower(phrase) {
-		if _, ok := letters[char]; ok {
+
+		isAlphabetic := char >= 97 && char <= 122
+		_, isNotUnique := letters[char]
+
+		if isAlphabetic && isNotUnique {
 			return false
 		}
-		//	fmt.Println("\nchar: ", char, "\nletters: ", letters)
 		letters[char] = true
+
+		// if _, ok := letters[char]; ok {
+		// 	return false
+		// }
+		// letters[char] = true
 	}
 	return true
 }

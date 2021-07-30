@@ -29,11 +29,11 @@ var testCases = []struct {
 		input:       "zzyzx",
 		expected:    false,
 	},
-	{
-		description: "longest reported english isogram",
-		input:       "subdermatoglyphic",
-		expected:    true,
-	},
+	// {
+	// 	description: "longest reported english isogram",
+	// 	input:       "subdermatoglyphic",
+	// 	expected:    true,
+	// },
 	{
 		description: "word with duplicated character in mixed case",
 		input:       "Alphabet",
@@ -49,16 +49,16 @@ var testCases = []struct {
 	// 	input:       "thumbscrew-japingly",
 	// 	expected:    true,
 	// },
-	// {
-	// 	description: "hypothetical word with duplicated character following hyphen",
-	// 	input:       "thumbscrew-jappingly",
-	// 	expected:    false,
-	// },
-	// {
-	// 	description: "isogram with duplicated hyphen",
-	// 	input:       "six-year-old",
-	// 	expected:    true,
-	// },
+	{
+		description: "hypothetical word with duplicated character following hyphen",
+		input:       "thumbscrew-jappingly",
+		expected:    false,
+	},
+	{
+		description: "isogram with duplicated hyphen",
+		input:       "six-year-old",
+		expected:    true,
+	},
 	// {
 	// 	description: "made-up name that is an isogram",
 	// 	input:       "Emily Jung Schwartzkopf",
