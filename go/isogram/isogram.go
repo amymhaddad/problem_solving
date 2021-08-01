@@ -1,24 +1,27 @@
+// Package isogram determines if a string is an isogram
 package isogram
 
-import "strings"
+import (
+	"unicode"
+)
 
 // IsIsogram determines if a given string is an isogram
 func IsIsogram(phrase string) bool {
-	var letters = make(map[rune]bool)
+	var letters = make(map[rune]struct{})
 
-	for _, char := range strings.ToLower(phrase) {
+	for _, char := range phrase {
 
-		isAlphabetic := char >= 97 && char <= 122
+		char := unicode.ToLower(char)
 
-		if !isAlphabetic {
+		if !unicode.IsLower(char) {
 			continue
 		}
 
-		if letters[char] {
+		if _, found := letters[char]; found {
 			return false
 		}
 
-		letters[char] = true
+		letters[char] = struct{}{}
 
 	}
 	return true
