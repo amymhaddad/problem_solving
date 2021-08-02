@@ -1,6 +1,6 @@
 package diffsquares
 
-import "math"
+//import "math"
 
 //SquareOfSum sums all numbers from 1 through the given number, and squares the
 //total
@@ -13,6 +13,5 @@ func SquareOfSum(num int) int {
 		num--
 	}
 
-	sq := math.Sqrt(float64(total))
-	return int(sq)
+	return total * total
 }

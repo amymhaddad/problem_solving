@@ -10,6 +10,7 @@ var tests = []struct{ n, sqOfSum, sumOfSq int }{
 
 func TestSquareOfSum(t *testing.T) {
 	for _, test := range tests {
+		
 		if s := SquareOfSum(test.n); s != test.sqOfSum {
 			t.Fatalf("SquareOfSum(%d) = %d, want %d", test.n, s, test.sqOfSum)
 		}
@@ -35,11 +36,11 @@ func TestSquareOfSum(t *testing.T) {
 
 // Benchmark functions on just a single number (100, from the original PE problem)
 // to avoid overhead of iterating over tests.
-func BenchmarkSquareOfSum(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		SquareOfSum(100)
-	}
-}
+// func BenchmarkSquareOfSum(b *testing.B) {
+// 	for i := 0; i < b.N; i++ {
+// 		SquareOfSum(100)
+// 	}
+// }
 
 // func BenchmarkSumOfSquares(b *testing.B) {
 // 	for i := 0; i < b.N; i++ {
