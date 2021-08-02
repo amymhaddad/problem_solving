@@ -11,11 +11,11 @@ func IsIsogram(phrase string) bool {
 
 	for _, char := range phrase {
 
-		char := unicode.ToLower(char)
-
-		if !unicode.IsLower(char) {
+		if !unicode.IsLetter(char) {
 			continue
 		}
+
+		char := unicode.ToLower(char)
 
 		if _, found := letters[char]; found {
 			return false
