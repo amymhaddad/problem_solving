@@ -10,20 +10,20 @@ var tests = []struct{ n, sqOfSum, sumOfSq int }{
 
 func TestSquareOfSum(t *testing.T) {
 	for _, test := range tests {
-		
+
 		if s := SquareOfSum(test.n); s != test.sqOfSum {
 			t.Fatalf("SquareOfSum(%d) = %d, want %d", test.n, s, test.sqOfSum)
 		}
 	}
 }
 
-// func TestSumOfSquares(t *testing.T) {
-// 	for _, test := range tests {
-// 		if s := SumOfSquares(test.n); s != test.sumOfSq {
-// 			t.Fatalf("SumOfSquares(%d) = %d, want %d", test.n, s, test.sumOfSq)
-// 		}
-// 	}
-// }
+func TestSumOfSquares(t *testing.T) {
+	for _, test := range tests {
+		if s := SumOfSquares(test.n); s != test.sumOfSq {
+			t.Fatalf("SumOfSquares(%d) = %d, want %d", test.n, s, test.sumOfSq)
+		}
+	}
+}
 
 // func TestDifference(t *testing.T) {
 // 	for _, test := range tests {
