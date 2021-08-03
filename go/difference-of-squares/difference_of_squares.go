@@ -1,30 +1,38 @@
+//Package diffsquares finds the difference between the square of the sum and the
+//sum of the squares from n to 1
 package diffsquares
 
-import "math"
-
-//SquareOfSum sums all numbers from 1 through the given number, and squares the
+//SquareOfSum sums all numbers from the given number to one, and squares the
 //total
 func SquareOfSum(num int) int {
 
-	var total float64
+	var total int
 
 	for num > 0 {
-		total += float64(num)
+		total += num
 		num--
 	}
 
-	return int(math.Pow(total, 2))
+	return total * total
 }
 
-//SumOfSquares squares all numbers from 1 to the given number, and adds them
+//SumOfSquares squares each number from the given number to one, and adds them
 //together
 func SumOfSquares(num int) int {
-	var total float64
+	var total int
 
 	for num > 0 {
-		total += math.Pow(float64(num), 2)
+		total += num * num
 		num--
 	}
-	return int(total)
+	return total
+
+}
+
+//Difference calculates the difference between the square of the sum and the sum
+//of the squares for a given number
+func Difference(num int) int {
+
+	return SquareOfSum(num) - SumOfSquares(num)
 
 }

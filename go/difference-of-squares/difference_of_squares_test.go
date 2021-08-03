@@ -25,31 +25,31 @@ func TestSumOfSquares(t *testing.T) {
 	}
 }
 
-// func TestDifference(t *testing.T) {
-// 	for _, test := range tests {
-// 		want := test.sqOfSum - test.sumOfSq
-// 		if s := Difference(test.n); s != want {
-// 			t.Fatalf("Difference(%d) = %d, want %d", test.n, s, want)
-// 		}
-// 	}
-// }
+func TestDifference(t *testing.T) {
+	for _, test := range tests {
+		want := test.sqOfSum - test.sumOfSq
+		if s := Difference(test.n); s != want {
+			t.Fatalf("Difference(%d) = %d, want %d", test.n, s, want)
+		}
+	}
+}
 
 // Benchmark functions on just a single number (100, from the original PE problem)
 // to avoid overhead of iterating over tests.
-// func BenchmarkSquareOfSum(b *testing.B) {
-// 	for i := 0; i < b.N; i++ {
-// 		SquareOfSum(100)
-// 	}
-// }
+func BenchmarkSquareOfSum(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		SquareOfSum(100)
+	}
+}
 
-// func BenchmarkSumOfSquares(b *testing.B) {
-// 	for i := 0; i < b.N; i++ {
-// 		SumOfSquares(100)
-// 	}
-// }
+func BenchmarkSumOfSquares(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		SumOfSquares(100)
+	}
+}
 
-// func BenchmarkDifference(b *testing.B) {
-// 	for i := 0; i < b.N; i++ {
-// 		Difference(100)
-// 	}
-// }
+func BenchmarkDifference(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Difference(100)
+	}
+}
