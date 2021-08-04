@@ -7,7 +7,7 @@ import (
 
 // IsIsogram determines if a given string is an isogram
 func IsIsogram(phrase string) bool {
-	var letters = make(map[rune]struct{})
+	var uniqueLetters = make(map[rune]struct{})
 
 	for _, char := range phrase {
 
@@ -17,11 +17,11 @@ func IsIsogram(phrase string) bool {
 
 		char := unicode.ToLower(char)
 
-		if _, found := letters[char]; found {
+		if _, found := uniqueLetters[char]; found {
 			return false
 		}
 
-		letters[char] = struct{}{}
+		uniqueLetters[char] = struct{}{}
 
 	}
 	return true
