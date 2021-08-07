@@ -14,7 +14,7 @@ func (nums Ints) Keep(fn func(int) bool) Ints {
 	var results Ints
 
 	for _, val := range nums {
-		if fn(val) == true {
+		if fn(val) {
 			results = append(results, val)
 		}
 	}
@@ -28,7 +28,7 @@ func (nums Ints) Discard(fn func(int) bool) Ints {
 	var results Ints
 
 	for _, val := range nums {
-		if fn(val) == false {
+		if !fn(val) {
 			results = append(results, val)
 		}
 	}
@@ -42,10 +42,30 @@ func (words Strings) Keep(fn func(string) bool) Strings {
 	var results Strings
 
 	for _, val := range words {
-		if fn(val) == true {
+		if fn(val) {
 			results = append(results, val)
 		}
 	}
 
+	return results
+}
+
+//Keep Lists is a method that returns a new collection containing those elements where the predicate is true
+func (lists Lists) Keep(fn func(int) bool) Lists {
+	var results Lists
+
+	for _, list := range lists {
+		i := len(list) - 1
+		for i > 0 {
+			if !fn(list[i]) {
+				break
+			}
+			i--
+		}
+		if i == 0 {
+			results = append(results, list)
+		}
+
+	}
 	return results
 }
