@@ -36,3 +36,16 @@ func (nums Ints) Discard(fn func(int) bool) Ints {
 	return results
 
 }
+
+//Keep Strings is a method that returns a new collection containing those elements where the predicate is true
+func (words Strings) Keep(fn func(string) bool) Strings {
+	var results Strings
+
+	for _, val := range words {
+		if fn(val) == true {
+			results = append(results, val)
+		}
+	}
+
+	return results
+}
