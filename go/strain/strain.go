@@ -11,54 +11,54 @@ type Strings []string
 
 //Keep filters integers and returns a new collection containing those elements where the predicate is true
 func (nums Ints) Keep(fn func(int) bool) Ints {
-	var results Ints
+	var result Ints
 
-	for _, val := range nums {
-		if fn(val) {
-			results = append(results, val)
+	for _, num := range nums {
+		if fn(num) {
+			result = append(result, num)
 		}
 	}
 
-	return results
+	return result
 
 }
 
 //Discard filters integers and returns a new collection containing those elements where the predicate is false.
 func (nums Ints) Discard(fn func(int) bool) Ints {
-	var results Ints
+	var result Ints
 
-	for _, val := range nums {
-		if !fn(val) {
-			results = append(results, val)
+	for _, num := range nums {
+		if !fn(num) {
+			result = append(result, num)
 		}
 	}
 
-	return results
+	return result
 
 }
 
 //Keep filters strings and returns a new collection containing those elements where the predicate is true
 func (words Strings) Keep(fn func(string) bool) Strings {
-	var results Strings
+	var result Strings
 
-	for _, val := range words {
-		if fn(val) {
-			results = append(results, val)
+	for _, word := range words {
+		if fn(word) {
+			result = append(result, word)
 		}
 	}
 
-	return results
+	return result
 }
 
 //Keep filters slices and returns a new collection containing those elements where the predicate is true
 func (lists Lists) Keep(fn func([]int) bool) Lists {
-	var results Lists
+	var result Lists
 
 	for _, list := range lists {
 		if fn(list) {
-			results = append(results, list)
+			result = append(result, list)
 		}
 	}
 
-	return results
+	return result
 }
