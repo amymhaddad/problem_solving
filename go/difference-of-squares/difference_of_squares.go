@@ -5,27 +5,24 @@ package diffsquares
 //SquareOfSum sums all numbers from the given number to one, and squares the
 //total
 func SquareOfSum(num int) int {
-
-	var total int
-
-	for num > 0 {
-		total += num
-		num--
-	}
-
-	return total * total
+	sum := num * (num + 1) / 2
+	return sum * sum
 }
 
 //SumOfSquares squares each number from the given number to one, and adds them
 //together
 func SumOfSquares(num int) int {
-	var total int
 
-	for num > 0 {
-		total += num * num
-		num--
-	}
-	return total
+	squaredNum := num * num
+	sum := squaredNum * (squaredNum + 1) / 2
+	return sum
+	// var total int
+
+	// for num > 0 {
+	// 	total += num * num
+	// 	num--
+	// }
+	// return total
 
 }
 
