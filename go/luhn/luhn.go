@@ -1,8 +1,12 @@
 package luhn
 
+import "strings"
+
 //'0' is a character -- make a comparison to see if each char is >= '0' and <= '9'
 //Valid determins if a given number is valid based on the Luhn formula
 func Valid(num string) bool {
+
+	num = strings.ReplaceAll(num, " ", "")
 
 	if len(num) <= 1 || (num[len(num)-1] >= 97 && num[len(num)-1] <= 122) {
 		return false
@@ -13,10 +17,6 @@ func Valid(num string) bool {
 
 	for i := 0; i < len(number); i++ {
 		validNums := number[i] >= '0' && number[i] <= '9'
-
-		if number[i] == 32 {
-			continue
-		}
 
 		if !validNums {
 			return false

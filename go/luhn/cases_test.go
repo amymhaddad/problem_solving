@@ -64,21 +64,21 @@ var testCases = []struct {
 		"055-444-285",
 		false,
 	},
-	// {
-	// 	"valid strings with symbols included become invalid",
-	// 	"055# 444$ 285",
-	// 	false,
-	// },
-	// {
-	// 	"single zero with space is invalid",
-	// 	" 0",
-	// 	false,
-	// },
-	// {
-	// 	"more than a single zero is valid",
-	// 	"0000 0",
-	// 	true,
-	// },
+	{
+		"valid strings with symbols included become invalid",
+		"055# 444$ 285",
+		false,
+	},
+	{
+		"single zero with space is invalid",
+		" 0",
+		false,
+	},
+	{
+		"more than a single zero is valid",
+		"0000 0",
+		true,
+	},
 	// {
 	// 	"input digit 9 is correctly converted to output digit 9",
 	// 	"091",
