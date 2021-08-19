@@ -1,14 +1,20 @@
 package luhn
 
-import "strings"
+import (
+	"strings"
+)
 
 //'0' is a character -- make a comparison to see if each char is >= '0' and <= '9'
 //Valid determins if a given number is valid based on the Luhn formula
 func Valid(num string) bool {
 
-	num = strings.ReplaceAll(num, " ", "")
+	// num = strings.ReplaceAll(num, " ", "")
 
-	if len(num) <= 1 || (num[len(num)-1] >= 97 && num[len(num)-1] <= 122) {
+	// if len(num) <= 1 || (num[len(num)-1] >= 97 && num[len(num)-1] <= 122) {
+	// 	return false
+	// }
+
+	if !isValid(num) {
 		return false
 	}
 
@@ -17,13 +23,16 @@ func Valid(num string) bool {
 
 	for i := 0; i < len(number); i++ {
 		validNums := number[i] >= '0' && number[i] <= '9'
-
-		if !validNums {
-			return false
+		if validNums {
+			newNums = append(newNums, int(number[i]-'0'))
 		}
+
+		// if !validNums {
+		// 	return false
+		// }
 		//This works bc only looking for nums 0-9.
 		//THis won't work for other chars bc it'll exeed the amount
-		newNums = append(newNums, int(number[i]-'0'))
+		//newNums = append(newNums, int(number[i]-'0'))
 	}
 
 	luhnNums := make([]int, len(newNums))
@@ -48,4 +57,24 @@ func Valid(num string) bool {
 	}
 
 	return totalSum%10 == 0
+}
+
+func isValid(num string) bool {
+	num = strings.ReplaceAll(num, " ", "")
+
+	if len(num) <= 1 || (num[len(num)-1] >= 97 && num[len(num)-1] <= 122) {
+		return false
+	}
+
+	number := []byte(num)
+
+	for i := 0; i < len(number); i++ {
+		validNums := number[i] >= '0' && number[i] <= '9'
+
+		if !validNums {
+			return false
+		}
+	}
+	return true
+
 }
