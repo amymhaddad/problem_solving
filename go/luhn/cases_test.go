@@ -19,51 +19,51 @@ var testCases = []struct {
 		"0",
 		false,
 	},
-	// {
-	// 	"a simple valid SIN that remains valid if reversed",
-	// 	"059",
-	// 	true,
-	// },
-	// {
-	// 	"a simple valid SIN that becomes invalid if reversed",
-	// 	"59",
-	// 	true,
-	// },
-	// {
-	// 	"a valid Canadian SIN",
-	// 	"055 444 285",
-	// 	true,
-	// },
-	// {
-	// 	"invalid Canadian SIN",
-	// 	"055 444 286",
-	// 	false,
-	// },
-	// {
-	// 	"invalid credit card",
-	// 	"8273 1232 7352 0569",
-	// 	false,
-	// },
-	// {
-	// 	"valid number with an even number of digits",
-	// 	"095 245 88",
-	// 	true,
-	// },
-	// {
-	// 	"valid number with an odd number of spaces",
-	// 	"234 567 891 234",
-	// 	true,
-	// },
-	// {
-	// 	"valid strings with a non-digit added at the end become invalid",
-	// 	"059a",
-	// 	false,
-	// },
-	// {
-	// 	"valid strings with punctuation included become invalid",
-	// 	"055-444-285",
-	// 	false,
-	// },
+	{
+		"a simple valid SIN that remains valid if reversed",
+		"059",
+		true,
+	},
+	{
+		"a simple valid SIN that becomes invalid if reversed",
+		"59",
+		true,
+	},
+	{
+		"a valid Canadian SIN",
+		"055 444 285",
+		true,
+	},
+	{
+		"invalid Canadian SIN",
+		"055 444 286",
+		false,
+	},
+	{
+		"invalid credit card",
+		"8273 1232 7352 0569",
+		false,
+	},
+	{
+		"valid number with an even number of digits",
+		"095 245 88",
+		true,
+	},
+	{
+		"valid number with an odd number of spaces",
+		"234 567 891 234",
+		true,
+	},
+	{
+		"valid strings with a non-digit added at the end become invalid",
+		"059a",
+		false,
+	},
+	{
+		"valid strings with punctuation included become invalid",
+		"055-444-285",
+		false,
+	},
 	// {
 	// 	"valid strings with symbols included become invalid",
 	// 	"055# 444$ 285",
