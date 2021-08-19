@@ -79,19 +79,19 @@ var testCases = []struct {
 		"0000 0",
 		true,
 	},
-	// {
-	// 	"input digit 9 is correctly converted to output digit 9",
-	// 	"091",
-	// 	true,
-	// },
-	// {
-	// 	"using ascii value for non-doubled non-digit isn't allowed",
-	// 	"055b 444 285",
-	// 	false,
-	// },
-	// {
-	// 	"using ascii value for doubled non-digit isn't allowed",
-	// 	":9",
-	// 	false,
-	// },
+	{
+		"input digit 9 is correctly converted to output digit 9",
+		"091",
+		true,
+	},
+	{
+		"using ascii value for non-doubled non-digit isn't allowed",
+		"055b 444 285",
+		false,
+	},
+	{
+		"using ascii value for doubled non-digit isn't allowed",
+		":9",
+		false,
+	},
 }
