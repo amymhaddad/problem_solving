@@ -1,3 +1,4 @@
+//Package luhn determines if a number is valid based on the Luhn formula
 package luhn
 
 import (
