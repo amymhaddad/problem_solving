@@ -13,10 +13,31 @@ type binFunc func(int, int) int
 //the entire method returns an int
 //param name is fn and the type binFund
 func (nums IntList) Foldl(fn binFunc, initial int) int {
-	return 2
+	if len(nums) == 0 {
+		return initial
+	}
+
+	var total int
+	for i := range nums {
+
+		result := fn(initial, nums[i])
+		initial = result
+		total = result
+	}
+	return total
 }
 
-func (nums IntList) Foldr(fn binFunc, inital int) int {
+func (nums IntList) Foldr(fn binFunc, initial int) int {
+	if len(nums) == 0 {
+		return initial
+	}
 
-	return 2
+	var total int
+	for i := len(nums) - 1; i >= 0; i-- {
+		result := fn(initial, nums[i])
+		initial = result
+		total = result
+	}
+	return total
+
 }
