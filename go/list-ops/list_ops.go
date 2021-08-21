@@ -34,7 +34,7 @@ func (nums IntList) Foldr(fn binFunc, initial int) int {
 
 	var total int
 	for i := len(nums) - 1; i >= 0; i-- {
-		result := fn(initial, nums[i])
+		result := fn(nums[i], initial)
 		initial = result
 		total = result
 	}

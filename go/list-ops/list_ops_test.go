@@ -1,6 +1,7 @@
 package listops
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -80,41 +81,42 @@ func TestFold(t *testing.T) {
 
 }
 
-// var filterTestCases = []struct {
-// 	name     string
-// 	property string
-// 	fn       predFunc
-// 	list     []int
-// 	want     []int
-// }{
-// 	{
-// 		name:     "empty list",
-// 		property: "filter",
-// 		fn:       func(n int) bool { return n%2 == 1 },
-// 		list:     []int{},
-// 		want:     []int{},
-// 	},
-// 	{
-// 		name:     "non-empty list",
-// 		property: "filter",
-// 		fn:       func(n int) bool { return n%2 == 1 },
-// 		list:     []int{1, 2, 3, 4, 5},
-// 		want:     []int{1, 3, 5},
-// 	},
-// }
-//
-// func TestFilterMethod(t *testing.T) {
-// 	for _, tt := range filterTestCases {
-// 		in := IntList(tt.list)
-// 		got := in.Filter(tt.fn)
-// 		if !reflect.DeepEqual(IntList(tt.want), got) {
-// 			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
-// 		} else {
-// 			t.Logf("PASS: %s: %s", tt.property, tt.name)
-// 		}
-//
-// 	}
-// }
+var filterTestCases = []struct {
+	name     string
+	property string
+	fn       predFunc
+	list     []int
+	want     []int
+}{
+	{
+		name:     "empty list",
+		property: "filter",
+		fn:       func(n int) bool { return n%2 == 1 },
+		list:     []int{},
+		want:     []int{},
+	},
+	{
+		name:     "non-empty list",
+		property: "filter",
+		fn:       func(n int) bool { return n%2 == 1 },
+		list:     []int{1, 2, 3, 4, 5},
+		want:     []int{1, 3, 5},
+	},
+}
+
+func TestFilterMethod(t *testing.T) {
+	for _, tt := range filterTestCases {
+		in := IntList(tt.list)
+		got := in.Filter(tt.fn)
+		if !reflect.DeepEqual(IntList(tt.want), got) {
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
+		}
+
+	}
+}
+
 //
 // var lengthTestCases = []struct {
 // 	name     string
