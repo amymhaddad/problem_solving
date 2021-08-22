@@ -91,3 +91,11 @@ func (nums IntList) Reverse() IntList {
 	return reversed
 
 }
+
+func (firstNums IntList) Append(secondNums IntList) IntList {
+	for _, value := range secondNums {
+		firstNums = append(firstNums, value)
+	}
+	return firstNums
+
+}

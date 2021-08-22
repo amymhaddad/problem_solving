@@ -217,79 +217,79 @@ func TestReverseMethod(t *testing.T) {
 
 	}
 }
-//
-// var appendTestCases = []struct {
-// 	name       string
-// 	property   string
-// 	list       IntList
-// 	appendThis IntList
-// 	want       IntList
-// }{
-// 	{
-// 		name:       "empty list",
-// 		property:   "append",
-// 		list:       []int{},
-// 		appendThis: []int{},
-// 		want:       []int{},
-// 	},
-// 	{
-// 		name:       "empty list to list",
-// 		property:   "append",
-// 		list:       []int{},
-// 		appendThis: []int{1, 2, 3, 4},
-// 		want:       []int{1, 2, 3, 4},
-// 	},
-// 	{
-// 		name:       "non-empty lists",
-// 		property:   "append",
-// 		list:       []int{1, 2},
-// 		appendThis: []int{2, 3, 4, 5},
-// 		want:       []int{1, 2, 2, 3, 4, 5},
-// 	},
-// }
-//
-// func TestAppendMethod(t *testing.T) {
-// 	for _, tt := range appendTestCases {
-// 		got := tt.list.Append(tt.appendThis)
-// 		if !reflect.DeepEqual(tt.want, got) {
-// 			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
-// 		} else {
-// 			t.Logf("PASS: %s: %s", tt.property, tt.name)
-// 		}
-//
-// 	}
-// }
-//
-// var concatTestCases = []struct {
-// 	name     string
-// 	property string
-// 	list     IntList
-// 	args     []IntList
-// 	want     IntList
-// }{
-// 	{
-// 		name:     "empty list",
-// 		property: "concat",
-// 		list:     []int{},
-// 		args:     []IntList{},
-// 		want:     []int{},
-// 	},
-// 	{
-// 		name:     "list of lists",
-// 		property: "concat",
-// 		list:     []int{1, 2},
-// 		args:     []IntList{[]int{3}, []int{}, []int{4, 5, 6}},
-// 		want:     []int{1, 2, 3, 4, 5, 6},
-// 	},
-// }
-//
-// func TestConcatMethod(t *testing.T) {
-// 	for _, tt := range concatTestCases {
-// 		got := tt.list.Concat(tt.args)
-// 		if !reflect.DeepEqual(tt.want, got) {
-// 			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
-// 		} else {
-// 			t.Logf("PASS: %s: %s", tt.property, tt.name)
-// 		}
-// 	}
-// }
+
+var appendTestCases = []struct {
+	name       string
+	property   string
+	list       IntList
+	appendThis IntList
+	want       IntList
+}{
+	{
+		name:       "empty list",
+		property:   "append",
+		list:       []int{},
+		appendThis: []int{},
+		want:       []int{},
+	},
+	{
+		name:       "empty list to list",
+		property:   "append",
+		list:       []int{},
+		appendThis: []int{1, 2, 3, 4},
+		want:       []int{1, 2, 3, 4},
+	},
+	{
+		name:       "non-empty lists",
+		property:   "append",
+		list:       []int{1, 2},
+		appendThis: []int{2, 3, 4, 5},
+		want:       []int{1, 2, 2, 3, 4, 5},
+	},
+}
+
+func TestAppendMethod(t *testing.T) {
+	for _, tt := range appendTestCases {
+		got := tt.list.Append(tt.appendThis)
+		if !reflect.DeepEqual(tt.want, got) {
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
+		}
+
+	}
+}
+
+var concatTestCases = []struct {
+	name     string
+	property string
+	list     IntList
+	args     []IntList
+	want     IntList
+}{
+	{
+		name:     "empty list",
+		property: "concat",
+		list:     []int{},
+		args:     []IntList{},
+		want:     []int{},
+	},
+	{
+		name:     "list of lists",
+		property: "concat",
+		list:     []int{1, 2},
+		args:     []IntList{[]int{3}, []int{}, []int{4, 5, 6}},
+		want:     []int{1, 2, 3, 4, 5, 6},
+	},
+}
+
+func TestConcatMethod(t *testing.T) {
+	for _, tt := range concatTestCases {
+		got := tt.list.Concat(tt.args)
+		if !reflect.DeepEqual(tt.want, got) {
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
+		}
+	}
+}
