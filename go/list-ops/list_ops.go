@@ -11,6 +11,8 @@ type binFunc func(int, int) int
 
 type predFunc func(int) bool
 
+type unaryFunc func(int) int
+
 //inner function takes 2 ints and returns an int
 //the entire method returns an int
 //param name is fn and the type binFund
@@ -63,4 +65,17 @@ func (nums IntList) Filter(fn predFunc) IntList {
 
 func (nums IntList) Length() int {
 	return len(nums)
+}
+
+func (nums IntList) Map(fn unaryFunc) IntList {
+	mappedNums := make(IntList, len(nums))
+
+	if len(nums) == 0 {
+		return mappedNums
+	}
+
+	for i := 0; i < len(mappedNums); i++ {
+		mappedNums[i] = fn(nums[i])
+	}
+	return mappedNums
 }

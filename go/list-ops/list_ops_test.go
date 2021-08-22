@@ -119,7 +119,6 @@ func TestFilterMethod(t *testing.T) {
 	}
 }
 
-
 var lengthTestCases = []struct {
 	name     string
 	property string
@@ -152,41 +151,41 @@ func TestLengthMethod(t *testing.T) {
 	}
 }
 
-// var mapTestCases = []struct {
-// 	name     string
-// 	property string
-// 	list     IntList
-// 	fn       unaryFunc
-// 	want     IntList
-// }{
-// 	{
-// 		name:     "empty list",
-// 		property: "map",
-// 		list:     []int{},
-// 		fn:       func(x int) int { return x + 1 },
-// 		want:     []int{},
-// 	},
-// 	{
-// 		name:     "non-empty list",
-// 		property: "map",
-// 		list:     []int{1, 3, 5, 7},
-// 		fn:       func(x int) int { return x + 1 },
-// 		want:     []int{2, 4, 6, 8},
-// 	},
-// }
-//
-// func TestMapMethod(t *testing.T) {
-// 	for _, tt := range mapTestCases {
-// 		got := tt.list.Map(tt.fn)
-// 		if !reflect.DeepEqual(tt.want, got) {
-// 			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
-// 		} else {
-// 			t.Logf("PASS: %s: %s", tt.property, tt.name)
-// 		}
-//
-// 	}
-// }
-//
+var mapTestCases = []struct {
+	name     string
+	property string
+	list     IntList
+	fn       unaryFunc
+	want     IntList
+}{
+	{
+		name:     "empty list",
+		property: "map",
+		list:     []int{},
+		fn:       func(x int) int { return x + 1 },
+		want:     []int{},
+	},
+	{
+		name:     "non-empty list",
+		property: "map",
+		list:     []int{1, 3, 5, 7},
+		fn:       func(x int) int { return x + 1 },
+		want:     []int{2, 4, 6, 8},
+	},
+}
+
+func TestMapMethod(t *testing.T) {
+	for _, tt := range mapTestCases {
+		got := tt.list.Map(tt.fn)
+		if !reflect.DeepEqual(tt.want, got) {
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
+		}
+
+	}
+}
+
 // var reverseTestCases = []struct {
 // 	name     string
 // 	property string
