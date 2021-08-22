@@ -79,3 +79,15 @@ func (nums IntList) Map(fn unaryFunc) IntList {
 	}
 	return mappedNums
 }
+
+func (nums IntList) Reverse() IntList {
+	reversed := make(IntList, len(nums))
+	var numIndex int
+
+	for i := len(reversed) - 1; i >= 0; i-- {
+		reversed[i] = nums[numIndex]
+		numIndex++
+	}
+	return reversed
+
+}

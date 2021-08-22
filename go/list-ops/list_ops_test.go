@@ -186,37 +186,37 @@ func TestMapMethod(t *testing.T) {
 	}
 }
 
-// var reverseTestCases = []struct {
-// 	name     string
-// 	property string
-// 	list     IntList
-// 	want     IntList
-// }{
-// 	{
-// 		name:     "empty list",
-// 		property: "reverse",
-// 		list:     []int{},
-// 		want:     []int{},
-// 	},
-// 	{
-// 		name:     "non-empty list",
-// 		property: "reverse",
-// 		list:     []int{1, 3, 5, 7},
-// 		want:     []int{7, 5, 3, 1},
-// 	},
-// }
-//
-// func TestReverseMethod(t *testing.T) {
-// 	for _, tt := range reverseTestCases {
-// 		got := tt.list.Reverse()
-// 		if !reflect.DeepEqual(tt.want, got) {
-// 			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
-// 		} else {
-// 			t.Logf("PASS: %s: %s", tt.property, tt.name)
-// 		}
-//
-// 	}
-// }
+var reverseTestCases = []struct {
+	name     string
+	property string
+	list     IntList
+	want     IntList
+}{
+	{
+		name:     "empty list",
+		property: "reverse",
+		list:     []int{},
+		want:     []int{},
+	},
+	{
+		name:     "non-empty list",
+		property: "reverse",
+		list:     []int{1, 3, 5, 7},
+		want:     []int{7, 5, 3, 1},
+	},
+}
+
+func TestReverseMethod(t *testing.T) {
+	for _, tt := range reverseTestCases {
+		got := tt.list.Reverse()
+		if !reflect.DeepEqual(tt.want, got) {
+			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
+		}
+
+	}
+}
 //
 // var appendTestCases = []struct {
 // 	name       string
