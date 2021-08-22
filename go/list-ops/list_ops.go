@@ -60,3 +60,7 @@ func (nums IntList) Filter(fn predFunc) IntList {
 	}
 	return filteredNums
 }
+
+func (nums IntList) Length() int {
+	return len(nums)
+}

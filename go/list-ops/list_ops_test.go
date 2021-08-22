@@ -119,39 +119,39 @@ func TestFilterMethod(t *testing.T) {
 	}
 }
 
-//
-// var lengthTestCases = []struct {
-// 	name     string
-// 	property string
-// 	list     IntList
-// 	want     int
-// }{
-// 	{
-// 		name:     "empty list",
-// 		property: "length",
-// 		list:     []int{},
-// 		want:     0,
-// 	},
-// 	{
-// 		name:     "non-empty list",
-// 		property: "length",
-// 		list:     []int{1, 2, 3, 4},
-// 		want:     4,
-// 	},
-// }
-//
-// func TestLengthMethod(t *testing.T) {
-// 	for _, tt := range lengthTestCases {
-// 		got := tt.list.Length()
-// 		if tt.want != got {
-// 			t.Fatalf("FAIL: %s: %q -- expected: %d, actual: %d", tt.property, tt.name, tt.want, got)
-// 		} else {
-// 			t.Logf("PASS: %s: %s", tt.property, tt.name)
-// 		}
-//
-// 	}
-// }
-//
+
+var lengthTestCases = []struct {
+	name     string
+	property string
+	list     IntList
+	want     int
+}{
+	{
+		name:     "empty list",
+		property: "length",
+		list:     []int{},
+		want:     0,
+	},
+	{
+		name:     "non-empty list",
+		property: "length",
+		list:     []int{1, 2, 3, 4},
+		want:     4,
+	},
+}
+
+func TestLengthMethod(t *testing.T) {
+	for _, tt := range lengthTestCases {
+		got := tt.list.Length()
+		if tt.want != got {
+			t.Fatalf("FAIL: %s: %q -- expected: %d, actual: %d", tt.property, tt.name, tt.want, got)
+		} else {
+			t.Logf("PASS: %s: %s", tt.property, tt.name)
+		}
+
+	}
+}
+
 // var mapTestCases = []struct {
 // 	name     string
 // 	property string
