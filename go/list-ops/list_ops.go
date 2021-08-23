@@ -1,59 +1,50 @@
 package listops
 
+//IntList is type slice
 type IntList []int
 
-//always look at the test to determine what to write (ie, function or method)
-// adding behavior to IntList type
-
-//a function can be a type -- just naming something particular
-//type is binFunc; func(type of params) return type
 type binFunc func(int, int) int
 
 type predFunc func(int) bool
 
 type unaryFunc func(int) int
 
-//inner function takes 2 ints and returns an int
-//the entire method returns an int
-//param name is fn and the type binFund
+//Foldl takes a function and an initial accumulator and applies
+//them to a slice of numbers -- starting from the left
 func (nums IntList) Foldl(fn binFunc, initial int) int {
 	if len(nums) == 0 {
 		return initial
 	}
 
 	var total int
-	for i := range nums {
 
-		result := fn(initial, nums[i])
-		initial = result
-		total = result
+	for i := range nums {
+		initial = fn(initial, nums[i])
+		total = initial
 	}
 	return total
 }
 
+//Foldr takes a function and an initial accumulator and applies
+//them to a slice of numbers -- starting from the right
 func (nums IntList) Foldr(fn binFunc, initial int) int {
 	if len(nums) == 0 {
 		return initial
 	}
 
 	var total int
+
 	for i := len(nums) - 1; i >= 0; i-- {
-		result := fn(nums[i], initial)
-		initial = result
-		total = result
+		initial = fn(nums[i], initial)
+		total = initial
 	}
 	return total
-
 }
 
-//if use IntList in the program, must use {} to initialize it
-//It's a method on IntList, so I'm probably going to do something w/it and
-//return it
+//Filter takes a function and applies it to a slice of numbers, and returns a
+//slice of numbers for which the function is true
 func (nums IntList) Filter(fn predFunc) IntList {
 	filteredNums := IntList{}
-	if len(nums) == 0 {
-		return filteredNums
-	}
 
 	for _, value := range nums {
 		if fn(value) {
@@ -63,16 +54,15 @@ func (nums IntList) Filter(fn predFunc) IntList {
 	return filteredNums
 }
 
+//Length returns the length of a slice of numbers
 func (nums IntList) Length() int {
 	return len(nums)
 }
 
+//Map takes a function and a slice of numbers, and returns a slice with the
+//function applied to each number in the slice
 func (nums IntList) Map(fn unaryFunc) IntList {
 	mappedNums := make(IntList, len(nums))
-
-	if len(nums) == 0 {
-		return mappedNums
-	}
 
 	for i := 0; i < len(mappedNums); i++ {
 		mappedNums[i] = fn(nums[i])
@@ -80,6 +70,7 @@ func (nums IntList) Map(fn unaryFunc) IntList {
 	return mappedNums
 }
 
+//Reverse reverses a given slice of numbers
 func (nums IntList) Reverse() IntList {
 	reversed := make(IntList, len(nums))
 	var numIndex int
@@ -92,19 +83,21 @@ func (nums IntList) Reverse() IntList {
 
 }
 
-func (firstNums IntList) Append(secondNums IntList) IntList {
+//Append adds all items from the second slice of numbers to the first
+func (nums IntList) Append(secondNums IntList) IntList {
 	for _, value := range secondNums {
-		firstNums = append(firstNums, value)
+		nums = append(nums, value)
 	}
-	return firstNums
+	return nums
 
 }
 
-func (initial IntList) Concat(nums []IntList) IntList {
-	for _, vals := range nums {
+//Concat combines all elements from multiple slices into a single slice
+func (nums IntList) Concat(multiNums []IntList) IntList {
+	for _, vals := range multiNums {
 		for i := range vals {
-			initial = append(initial, vals[i])
+			nums = append(nums, vals[i])
 		}
 	}
-	return initial
+	return nums
 }

@@ -108,8 +108,6 @@ func TestFilterMethod(t *testing.T) {
 	for _, tt := range filterTestCases {
 		in := IntList(tt.list)
 		got := in.Filter(tt.fn)
-		//converts want to an int list and compares it to got, which is what I
-		//return so it has to be the same (ie, an IntList)
 		if !reflect.DeepEqual(IntList(tt.want), got) {
 			t.Fatalf("FAIL: %s: %q -- expected: %v, actual: %v", tt.property, tt.name, tt.want, got)
 		} else {
