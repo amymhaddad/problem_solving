@@ -99,3 +99,12 @@ func (firstNums IntList) Append(secondNums IntList) IntList {
 	return firstNums
 
 }
+
+func (initial IntList) Concat(nums []IntList) IntList {
+	for _, vals := range nums {
+		for i := range vals {
+			initial = append(initial, vals[i])
+		}
+	}
+	return initial
+}
