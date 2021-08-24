@@ -21,3 +21,13 @@ func (nums Ints) Keep(fn func(int) bool) Ints {
 	return result
 }
 
+func (nums Ints) Discard(fn func(int) bool) Ints {
+	var result Ints
+
+	for _, val := range nums {
+		if !fn(val) {
+			result = append(result, val)
+		}
+	}
+	return result
+}

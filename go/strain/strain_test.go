@@ -82,23 +82,23 @@ func TestKeepInts(t *testing.T) {
 	}
 }
 
-// func TestDiscardInts(t *testing.T) {
-// 	for _, test := range discardTests {
-// 		cp := test.list
-// 		if cp != nil {
-// 			cp = append(Ints{}, cp...) // dup underlying array
-// 		}
-// 		switch res := cp.Discard(test.pred); {
-// 		case !reflect.DeepEqual(cp, test.list):
-// 			t.Fatalf("%#v.Discard() should not modify its receiver.  "+
-// 				"Found %#v, receiver should stay %#v",
-// 				test.list, cp, test.list)
-// 		case !reflect.DeepEqual(res, test.want):
-// 			t.Fatalf("%#v.Discard()\ngot: %#v\nwant: %#v",
-// 				test.list, res, test.want)
-// 		}
-// 	}
-// }
+func TestDiscardInts(t *testing.T) {
+	for _, test := range discardTests {
+		cp := test.list
+		if cp != nil {
+			cp = append(Ints{}, cp...) // dup underlying array
+		}
+		switch res := cp.Discard(test.pred); {
+		case !reflect.DeepEqual(cp, test.list):
+			t.Fatalf("%#v.Discard() should not modify its receiver.  "+
+				"Found %#v, receiver should stay %#v",
+				test.list, cp, test.list)
+		case !reflect.DeepEqual(res, test.want):
+			t.Fatalf("%#v.Discard()\ngot: %#v\nwant: %#v",
+				test.list, res, test.want)
+		}
+	}
+}
 
 // func TestKeepStrings(t *testing.T) {
 // 	zword := func(s string) bool { return len(s) > 0 && s[0] == 'z' }
