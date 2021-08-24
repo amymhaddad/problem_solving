@@ -31,6 +31,7 @@ func (nums Ints) Discard(fn func(int) bool) Ints {
 			result = append(result, val)
 		}
 	}
+
 	return result
 }
 
@@ -45,4 +46,18 @@ func (words Strings) Keep(fn func(string) bool) Strings {
 	}
 
 	return results
+}
+
+//Keep returns a new slice of one or more slices where the predicate is true
+func (lists Lists) Keep(fn func([]int) bool) Lists {
+	var result Lists
+
+	for _, list := range lists {
+		if fn(list) {
+			result = append(result, list)
+		}
+	}
+
+	return result
+
 }

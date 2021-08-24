@@ -151,18 +151,18 @@ func TestKeepLists(t *testing.T) {
 	}
 }
 
-// func BenchmarkKeepInts(b *testing.B) {
-// 	for i := 0; i < b.N; i++ {
-// 		for _, test := range keepTests {
-// 			test.list.Keep(test.pred)
-// 		}
-// 	}
-// }
+func BenchmarkKeepInts(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range keepTests {
+			test.list.Keep(test.pred)
+		}
+	}
+}
 
-// func BenchmarkDiscardInts(b *testing.B) {
-// 	for i := 0; i < b.N; i++ {
-// 		for _, test := range discardTests {
-// 			test.list.Discard(test.pred)
-// 		}
-// 	}
-// }
+func BenchmarkDiscardInts(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range discardTests {
+			test.list.Discard(test.pred)
+		}
+	}
+}
