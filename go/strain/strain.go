@@ -9,6 +9,7 @@ type Lists [][]int
 //Strings contains a slice of strings
 type Strings []string
 
+//Keep returns a new slice of numbers where the predicate is true
 func (nums Ints) Keep(fn func(int) bool) Ints {
 	var result Ints
 
@@ -21,6 +22,7 @@ func (nums Ints) Keep(fn func(int) bool) Ints {
 	return result
 }
 
+//Discard returns a new slice of numbers where the predicate is false
 func (nums Ints) Discard(fn func(int) bool) Ints {
 	var result Ints
 
@@ -30,4 +32,17 @@ func (nums Ints) Discard(fn func(int) bool) Ints {
 		}
 	}
 	return result
+}
+
+//Keep returns a new slice of strings where the predicate is true
+func (words Strings) Keep(fn func(string) bool) Strings {
+	var results Strings
+
+	for _, word := range words {
+		if fn(word) {
+			results = append(results, word)
+		}
+	}
+
+	return results
 }
