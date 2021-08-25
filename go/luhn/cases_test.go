@@ -9,31 +9,31 @@ var testCases = []struct {
 	input       string
 	ok          bool
 }{
-	{
-		"single digit strings can not be valid",
-		"1",
-		false,
-	},
-	{
-		"a single zero is invalid",
-		"0",
-		false,
-	},
-	{
-		"a simple valid SIN that remains valid if reversed",
-		"059",
-		true,
-	},
-	{
-		"a simple valid SIN that becomes invalid if reversed",
-		"59",
-		true,
-	},
-	{
-		"a valid Canadian SIN",
-		"055 444 285",
-		true,
-	},
+	// {
+	// 	"single digit strings can not be valid",
+	// 	"1",
+	// 	false,
+	// },
+	// {
+	// 	"a single zero is invalid",
+	// 	"0",
+	// 	false,
+	// },
+	// {
+	// 	"a simple valid SIN that remains valid if reversed",
+	// 	"059",
+	// 	true,
+	// },
+	// {
+	// 	"a simple valid SIN that becomes invalid if reversed",
+	// 	"59",
+	// 	true,
+	// },
+	// {
+	// 	"a valid Canadian SIN",
+	// 	"055 444 285",
+	// 	true,
+	// },
 	// {
 	// 	"invalid Canadian SIN",
 	// 	"055 444 286",
@@ -79,11 +79,11 @@ var testCases = []struct {
 	// 	"0000 0",
 	// 	true,
 	// },
-	// {
-	// 	"input digit 9 is correctly converted to output digit 9",
-	// 	"091",
-	// 	true,
-	// },
+	{
+		"input digit 9 is correctly converted to output digit 9",
+		"091",
+		true,
+	},
 	// {
 	// 	"using ascii value for non-doubled non-digit isn't allowed",
 	// 	"055b 444 285",

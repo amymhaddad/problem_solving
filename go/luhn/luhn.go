@@ -18,8 +18,11 @@ func Valid(nums string) bool {
 			return false
 		}
 
-		digitValue := int(val - '0')
-		if i == altDigit {
+		currIndex := len(nums) - 1 - i
+		currRuneVal := nums[len(nums)-1-i]
+		digitValue := int(currRuneVal - '0')
+
+		if currIndex == altDigit && digitValue != 9 {
 			digitValue = (digitValue * 2) % 9
 			altDigit -= 2
 		}
