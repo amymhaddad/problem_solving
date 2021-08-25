@@ -10,7 +10,6 @@ import (
 func Valid(nums string) bool {
 	nums = strings.ReplaceAll(nums, " ", "")
 	altDigit := len(nums) - 2
-
 	var total int
 
 	for i, val := range nums {
@@ -19,7 +18,7 @@ func Valid(nums string) bool {
 		}
 
 		currIndex := len(nums) - 1 - i
-		currRuneVal := nums[len(nums)-1-i]
+		currRuneVal := nums[currIndex]
 		digitValue := int(currRuneVal - '0')
 
 		if currIndex == altDigit && digitValue != 9 {
