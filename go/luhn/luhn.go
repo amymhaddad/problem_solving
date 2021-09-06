@@ -8,15 +8,16 @@ import (
 //Valid determines if a given number is valid based on the Luhn formula
 func Valid(nums string) bool {
 	nums = strings.ReplaceAll(nums, " ", "")
-	double := len(nums)%2 == 0
-	var total int
 
 	if len(nums) <= 1 {
 		return false
 	}
+
+	double := len(nums)%2 == 0
+	var total int
+
 	for _, num := range nums {
-		validNum := num-'0' >= 0 && num-'0' <= 9
-		if !validNum {
+		if num < '0' || num > '9' {
 			return false
 		}
 
