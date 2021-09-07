@@ -1,5 +1,7 @@
 package listops
 
+import "fmt"
+
 //IntList contains a slice of integers
 type IntList []int
 
@@ -7,15 +9,26 @@ type IntList []int
 type binFunc func(int, int) int
 
 func (nums IntList) Foldl(fn binFunc, initial int) int {
-	//return 15
-	accum := initial
-	for i := range nums {
-	 
-		accum = fn(initial, nums[i]) 
+	if len(nums) == 0 {
+		return initial
 	}
-	return accum
+
+	for i := range nums {
+		initial = fn(initial, nums[i])
+	}
+	return initial
 }
 
-func (l IntList) Foldr(fn binFunc, initial int) int {
-	return 15
+func (nums IntList) Foldr(fn binFunc, initial int) int {
+	if len(nums) == 0 {
+		return initial
+	}
+
+	for i := len(nums) - 1; i >= 0; i-- {
+		fmt.Println("HERE", i)
+		initial = fn(initial, nums[i])
+	}
+
+	return initial
+
 }
