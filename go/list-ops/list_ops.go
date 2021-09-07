@@ -8,8 +8,10 @@ type binFunc func(int, int) int
 
 type predFunc func(int) bool
 
+type unaryFunc func(int) int
+
 func (nums IntList) Foldl(fn binFunc, initial int) int {
-	if len(nums) == 0 {
+	if nums.Length() == 0 {
 		return initial
 	}
 
@@ -20,7 +22,7 @@ func (nums IntList) Foldl(fn binFunc, initial int) int {
 }
 
 func (nums IntList) Foldr(fn binFunc, initial int) int {
-	if len(nums) == 0 {
+	if nums.Length() == 0 {
 		return initial
 	}
 
@@ -43,5 +45,31 @@ func (nums IntList) Filter(fn predFunc) IntList {
 	}
 
 	return filteredVals
+
+}
+
+func (list IntList) Length() int {
+	return len(list)
+}
+
+func (list IntList) Map(fn unaryFunc) IntList {
+	mappedList := make(IntList, len(list))
+
+	for i, val := range list {
+		mappedList[i] = fn(val)
+	}
+
+	return mappedList
+
+}
+
+func (list IntList) Reverse() IntList {
+	reversed := make(IntList, len(list))
+
+	for i := range list {
+		reversed[i] = list[list.Length()-1-i]
+	}
+
+	return reversed
 
 }
