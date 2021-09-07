@@ -1,7 +1,5 @@
 package listops
 
-import "fmt"
-
 //IntList contains a slice of integers
 type IntList []int
 
@@ -25,8 +23,7 @@ func (nums IntList) Foldr(fn binFunc, initial int) int {
 	}
 
 	for i := len(nums) - 1; i >= 0; i-- {
-		fmt.Println("HERE", i)
-		initial = fn(initial, nums[i])
+		initial = fn(nums[i], initial)
 	}
 
 	return initial
