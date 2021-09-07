@@ -6,6 +6,8 @@ type IntList []int
 //must note what all the inputs and outputs are
 type binFunc func(int, int) int
 
+type predFunc func(int) bool
+
 func (nums IntList) Foldl(fn binFunc, initial int) int {
 	if len(nums) == 0 {
 		return initial
@@ -27,5 +29,19 @@ func (nums IntList) Foldr(fn binFunc, initial int) int {
 	}
 
 	return initial
+}
+
+func (nums IntList) Filter(fn predFunc) IntList {
+	filteredVals := IntList{}
+	//var filteredVals IntList doesnt' work: it LOOKS like (ie, prints) [] if empty list is encoutnered BUT
+	//its type is nil, and that's not what I want. I need to return type IntList. So I must declare and init IntList
+
+	for i := range nums {
+		if fn(nums[i]) {
+			filteredVals = append(filteredVals, nums[i])
+		}
+	}
+
+	return filteredVals
 
 }
