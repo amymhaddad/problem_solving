@@ -73,3 +73,12 @@ func (list IntList) Reverse() IntList {
 	return reversed
 
 }
+
+func (nums IntList) Append(moreNums IntList) IntList {
+	for i := range moreNums {
+		nums = append(nums, moreNums[i])
+	}
+
+	return nums
+
+}
