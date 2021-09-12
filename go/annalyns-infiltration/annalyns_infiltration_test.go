@@ -87,162 +87,162 @@ func TestCanSpy(t *testing.T) {
 	}
 }
 
-// func TestCanSignalPrisoner(t *testing.T) {
-// 	tests := []charactersState{
-// 		{
-// 			desc:            "All characters are sleeping",
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: false,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "archer is sleeping, prisoner is awake",
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: true,
-// 			expected:        true,
-// 		},
-// 		{
-// 			desc:            "archer is awake, prisoner is sleeping",
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: false,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "All characters are awake",
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: true,
-// 			expected:        false,
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.desc, func(t *testing.T) {
-// 			if got := CanSignalPrisoner(tt.archerIsAwake, tt.prisonerIsAwake); got != tt.expected {
-// 				t.Errorf("CanSignalPrisoner(%v, %v) = %v; want %v", tt.archerIsAwake, tt.prisonerIsAwake, got, tt.expected)
-// 			}
-// 		})
-// 	}
-// }
+func TestCanSignalPrisoner(t *testing.T) {
+	tests := []charactersState{
+		{
+			desc:            "All characters are sleeping",
+			archerIsAwake:   false,
+			prisonerIsAwake: false,
+			expected:        false,
+		},
+		{
+			desc:            "archer is sleeping, prisoner is awake",
+			archerIsAwake:   false,
+			prisonerIsAwake: true,
+			expected:        true,
+		},
+		{
+			desc:            "archer is awake, prisoner is sleeping",
+			archerIsAwake:   true,
+			prisonerIsAwake: false,
+			expected:        false,
+		},
+		{
+			desc:            "All characters are awake",
+			archerIsAwake:   true,
+			prisonerIsAwake: true,
+			expected:        false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.desc, func(t *testing.T) {
+			if got := CanSignalPrisoner(tt.archerIsAwake, tt.prisonerIsAwake); got != tt.expected {
+				t.Errorf("CanSignalPrisoner(%v, %v) = %v; want %v", tt.archerIsAwake, tt.prisonerIsAwake, got, tt.expected)
+			}
+		})
+	}
+}
 
-// func TestCanFreePrisoner(t *testing.T) {
-// 	tests := []charactersState{
-// 		{
-// 			desc:            "All characters are sleeping. Dog is not present.",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: false,
-// 			dogIsPresent:    false,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "All characters are sleeping. Dog is present.",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: false,
-// 			dogIsPresent:    true,
-// 			expected:        true,
-// 		},
-// 		{
-// 			desc:            "knight and archer are sleeping. Prisoner is awake. Dog is not present.",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: true,
-// 			dogIsPresent:    false,
-// 			expected:        true,
-// 		},
-// 		{
-// 			desc:            "knight and archer are sleeping. Prisoner is awake. Dog is present.",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: true,
-// 			dogIsPresent:    true,
-// 			expected:        true,
-// 		},
-// 		{
-// 			desc:            "knight is sleeping. archer is awake. Prisoner is sleeping. Dog is not present.",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: false,
-// 			dogIsPresent:    false,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "knight is sleeping. archer is awake. Prisoner is sleeping. Dog is present.",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: false,
-// 			dogIsPresent:    true,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "knight is sleeping. archer is awake. Prisoner is awake. Dog is not present.",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: true,
-// 			dogIsPresent:    false,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "knight is sleeping. archer is awake. Prisoner is awake. Dog is present.",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: true,
-// 			dogIsPresent:    true,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "knight is awake. archer is sleeping. Prisoner is awake. Dog is not present",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: true,
-// 			dogIsPresent:    false,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "knight is awake. archer is sleeping. Prisoner is awake. Dog is present",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: true,
-// 			dogIsPresent:    true,
-// 			expected:        true,
-// 		},
-// 		{
-// 			desc:            "knight is awake. archer is awake. Prisoner is sleeping. Dog is not present",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: false,
-// 			dogIsPresent:    false,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "knight is awake. archer is awake. Prisoner is sleeping. Dog is present",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: false,
-// 			dogIsPresent:    true,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "knight is awake. archer is awake. Prisoner is awake. Dog is not present",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: true,
-// 			dogIsPresent:    false,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "knight is awake. archer is awake. Prisoner is awake. Dog is present",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: true,
-// 			dogIsPresent:    true,
-// 			expected:        false,
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.desc, func(t *testing.T) {
-// 			if got := CanFreePrisoner(tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, tt.dogIsPresent); got != tt.expected {
-// 				t.Errorf("CanSignalPrisoner(%v,%v,%v,%v) = %v; want %v", tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, tt.dogIsPresent, got, tt.expected)
-// 			}
-// 		})
-// 	}
-// }
+func TestCanFreePrisoner(t *testing.T) {
+	tests := []charactersState{
+		{
+			desc:            "All characters are sleeping. Dog is not present.",
+			knightIsAwake:   false,
+			archerIsAwake:   false,
+			prisonerIsAwake: false,
+			dogIsPresent:    false,
+			expected:        false,
+		},
+		{
+			desc:            "All characters are sleeping. Dog is present.",
+			knightIsAwake:   false,
+			archerIsAwake:   false,
+			prisonerIsAwake: false,
+			dogIsPresent:    true,
+			expected:        true,
+		},
+		{
+			desc:            "knight and archer are sleeping. Prisoner is awake. Dog is not present.",
+			knightIsAwake:   false,
+			archerIsAwake:   false,
+			prisonerIsAwake: true,
+			dogIsPresent:    false,
+			expected:        true,
+		},
+		{
+			desc:            "knight and archer are sleeping. Prisoner is awake. Dog is present.",
+			knightIsAwake:   false,
+			archerIsAwake:   false,
+			prisonerIsAwake: true,
+			dogIsPresent:    true,
+			expected:        true,
+		},
+		{
+			desc:            "knight is sleeping. archer is awake. Prisoner is sleeping. Dog is not present.",
+			knightIsAwake:   false,
+			archerIsAwake:   true,
+			prisonerIsAwake: false,
+			dogIsPresent:    false,
+			expected:        false,
+		},
+		{
+			desc:            "knight is sleeping. archer is awake. Prisoner is sleeping. Dog is present.",
+			knightIsAwake:   false,
+			archerIsAwake:   true,
+			prisonerIsAwake: false,
+			dogIsPresent:    true,
+			expected:        false,
+		},
+		{
+			desc:            "knight is sleeping. archer is awake. Prisoner is awake. Dog is not present.",
+			knightIsAwake:   false,
+			archerIsAwake:   true,
+			prisonerIsAwake: true,
+			dogIsPresent:    false,
+			expected:        false,
+		},
+		{
+			desc:            "knight is sleeping. archer is awake. Prisoner is awake. Dog is present.",
+			knightIsAwake:   false,
+			archerIsAwake:   true,
+			prisonerIsAwake: true,
+			dogIsPresent:    true,
+			expected:        false,
+		},
+		{
+			desc:            "knight is awake. archer is sleeping. Prisoner is awake. Dog is not present",
+			knightIsAwake:   true,
+			archerIsAwake:   false,
+			prisonerIsAwake: true,
+			dogIsPresent:    false,
+			expected:        false,
+		},
+		{
+			desc:            "knight is awake. archer is sleeping. Prisoner is awake. Dog is present",
+			knightIsAwake:   true,
+			archerIsAwake:   false,
+			prisonerIsAwake: true,
+			dogIsPresent:    true,
+			expected:        true,
+		},
+		{
+			desc:            "knight is awake. archer is awake. Prisoner is sleeping. Dog is not present",
+			knightIsAwake:   true,
+			archerIsAwake:   true,
+			prisonerIsAwake: false,
+			dogIsPresent:    false,
+			expected:        false,
+		},
+		{
+			desc:            "knight is awake. archer is awake. Prisoner is sleeping. Dog is present",
+			knightIsAwake:   true,
+			archerIsAwake:   true,
+			prisonerIsAwake: false,
+			dogIsPresent:    true,
+			expected:        false,
+		},
+		{
+			desc:            "knight is awake. archer is awake. Prisoner is awake. Dog is not present",
+			knightIsAwake:   true,
+			archerIsAwake:   true,
+			prisonerIsAwake: true,
+			dogIsPresent:    false,
+			expected:        false,
+		},
+		{
+			desc:            "knight is awake. archer is awake. Prisoner is awake. Dog is present",
+			knightIsAwake:   true,
+			archerIsAwake:   true,
+			prisonerIsAwake: true,
+			dogIsPresent:    true,
+			expected:        false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.desc, func(t *testing.T) {
+			if got := CanFreePrisoner(tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, tt.dogIsPresent); got != tt.expected {
+				t.Errorf("CanSignalPrisoner(%v,%v,%v,%v) = %v; want %v", tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, tt.dogIsPresent, got, tt.expected)
+			}
+		})
+	}
+}
