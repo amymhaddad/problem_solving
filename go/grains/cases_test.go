@@ -26,39 +26,39 @@ var squareTests = []struct {
 		input:       3,
 		expectedVal: 4,
 	},
-	// {
-	// 	description: "4",
-	// 	input:       4,
-	// 	expectedVal: 8,
-	// },
-	// {
-	// 	description: "16",
-	// 	input:       16,
-	// 	expectedVal: 32768,
-	// },
-	// {
-	// 	description: "32",
-	// 	input:       32,
-	// 	expectedVal: 2147483648,
-	// },
-	// {
-	// 	description: "64",
-	// 	input:       64,
-	// 	expectedVal: 9223372036854775808,
-	// },
-	// {
-	// 	description: "square 0 returns an error",
-	// 	input:       0,
-	// 	expectError: true,
-	// },
-	// {
-	// 	description: "negative square returns an error",
-	// 	input:       -1,
-	// 	expectError: true,
-	// },
-	// {
-	// 	description: "square greater than 64 returns an error",
-	// 	input:       65,
-	// 	expectError: true,
-	// },
+	{
+		description: "4",
+		input:       4,
+		expectedVal: 8,
+	},
+	{
+		description: "16",
+		input:       16,
+		expectedVal: 32768,
+	},
+	{
+		description: "32",
+		input:       32,
+		expectedVal: 2147483648,
+	},
+	{
+		description: "64",
+		input:       64,
+		expectedVal: 9223372036854775808,
+	},
+	{
+		description: "square 0 returns an error",
+		input:       0,
+		expectError: true,
+	},
+	{
+		description: "negative square returns an error",
+		input:       -1,
+		expectError: true,
+	},
+	{
+		description: "square greater than 64 returns an error",
+		input:       65,
+		expectError: true,
+	},
 }
