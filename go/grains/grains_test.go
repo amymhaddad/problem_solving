@@ -42,7 +42,7 @@ func TestSquare(t *testing.T) {
 			}
 
 		}
-	}
+	}	
 
 	func BenchmarkTotal(b *testing.B) {
 		for i := 0; i < b.N; i++ {
