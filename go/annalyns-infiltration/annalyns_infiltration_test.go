@@ -33,59 +33,59 @@ func TestCanFastAttack(t *testing.T) {
 	}
 }
 
-// func TestCanSpy(t *testing.T) {
-// 	tests := []charactersState{
-// 		{
-// 			desc:            "All characters are sleeping",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: false,
-// 			expected:        false,
-// 		},
-// 		{
-// 			desc:            "knight is awake, archer and prisoner are sleeping",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: false,
-// 			expected:        true,
-// 		},
-// 		{
-// 			desc:            "knight and archer are awake, prisoner is sleeping",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: false,
-// 			expected:        true,
-// 		},
-// 		{
-// 			desc:            "knight and prisoner are awake, archer is sleeping",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: true,
-// 			expected:        true,
-// 		},
-// 		{
-// 			desc:            "knight and archer are sleeping, prisoner is awake",
-// 			knightIsAwake:   false,
-// 			archerIsAwake:   false,
-// 			prisonerIsAwake: true,
-// 			expected:        true,
-// 		},
-// 		{
-// 			desc:            "all characters are awake",
-// 			knightIsAwake:   true,
-// 			archerIsAwake:   true,
-// 			prisonerIsAwake: true,
-// 			expected:        true,
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.desc, func(t *testing.T) {
-// 			if got := CanSpy(tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake); got != tt.expected {
-// 				t.Errorf("CanSpy(%v, %v, %v) = %v; want %v", tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, got, tt.expected)
-// 			}
-// 		})
-// 	}
-// }
+func TestCanSpy(t *testing.T) {
+	tests := []charactersState{
+		{
+			desc:            "All characters are sleeping",
+			knightIsAwake:   false,
+			archerIsAwake:   false,
+			prisonerIsAwake: false,
+			expected:        false,
+		},
+		{
+			desc:            "knight is awake, archer and prisoner are sleeping",
+			knightIsAwake:   true,
+			archerIsAwake:   false,
+			prisonerIsAwake: false,
+			expected:        true,
+		},
+		{
+			desc:            "knight and archer are awake, prisoner is sleeping",
+			knightIsAwake:   true,
+			archerIsAwake:   true,
+			prisonerIsAwake: false,
+			expected:        true,
+		},
+		{
+			desc:            "knight and prisoner are awake, archer is sleeping",
+			knightIsAwake:   true,
+			archerIsAwake:   false,
+			prisonerIsAwake: true,
+			expected:        true,
+		},
+		{
+			desc:            "knight and archer are sleeping, prisoner is awake",
+			knightIsAwake:   false,
+			archerIsAwake:   false,
+			prisonerIsAwake: true,
+			expected:        true,
+		},
+		{
+			desc:            "all characters are awake",
+			knightIsAwake:   true,
+			archerIsAwake:   true,
+			prisonerIsAwake: true,
+			expected:        true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.desc, func(t *testing.T) {
+			if got := CanSpy(tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake); got != tt.expected {
+				t.Errorf("CanSpy(%v, %v, %v) = %v; want %v", tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, got, tt.expected)
+			}
+		})
+	}
+}
 
 // func TestCanSignalPrisoner(t *testing.T) {
 // 	tests := []charactersState{
