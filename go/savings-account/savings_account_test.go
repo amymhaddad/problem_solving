@@ -51,17 +51,17 @@ func TestGetMonth(t *testing.T) {
 	}
 }
 
-// func TestGetAccountNumber(t *testing.T) {
-// 	tests := map[string]struct {
-// 		want AccNo
-// 	}{
-// 		"GetAccountNumber 1": {want: "XF348IJ"},
-// 	}
-// 	for name, tc := range tests {
-// 		t.Run(name, func(t *testing.T) {
-// 			if got := GetAccountNumber(); got != tc.want {
-// 				t.Errorf("GetAccountNumber() = %v, want %v", got, tc.want)
-// 			}
-// 		})
-// 	}
-// }
+func TestGetAccountNumber(t *testing.T) {
+	tests := map[string]struct {
+		want AccNo
+	}{
+		"GetAccountNumber 1": {want: "XF348IJ"},
+	}
+	for name, tc := range tests {
+		t.Run(name, func(t *testing.T) {
+			if got := GetAccountNumber(); got != tc.want {
+				t.Errorf("GetAccountNumber() = %v, want %v", got, tc.want)
+			}
+		})
+	}
+}

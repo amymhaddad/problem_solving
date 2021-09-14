@@ -41,8 +41,9 @@ func GetMonth(month int) int {
 type AccNo string
 
 // AccountNo has a value of XF348IJ
+const AccountNo = "XF348IJ"
 
 // GetAccountNumber returns the AccountNo constant
 func GetAccountNumber() AccNo {
-	panic("Please create the AccountNo untyped string constant in the outer scope and then implement the GetAccountNumber function")
+	return AccountNo
 }
