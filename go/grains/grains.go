@@ -1,6 +1,8 @@
 package grains
 
-import "errors"
+import (
+	"errors"
+)
 
 //Square calculates the number of grains on a given square
 func Square(num int) (uint64, error) {
@@ -15,7 +17,7 @@ func Square(num int) (uint64, error) {
 	total := 1
 
 	for i := 2; i <= num; i++ {
-		total = total * 2
+		total = total << 1
 	}
 
 	return uint64(total), nil
