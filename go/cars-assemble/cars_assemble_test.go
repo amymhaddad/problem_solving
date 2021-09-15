@@ -55,50 +55,50 @@ func TestCalculateProductionRatePerHour(t *testing.T) {
 	}
 }
 
-// func TestCalculateProductionRatePerMinute(t *testing.T) {
-// 	tests := []struct {
-// 		name  string
-// 		speed int
-// 		want  int
-// 	}{
-// 		{
-// 			name:  "calculate production rate per minute for speed zero",
-// 			speed: 0,
-// 			want:  0,
-// 		},
-// 		{
-// 			name:  "calculate production rate per minute for speed one",
-// 			speed: 1,
-// 			want:  3,
-// 		},
-// 		{
-// 			name:  "calculate production rate per minute for speed five",
-// 			speed: 5,
-// 			want:  16,
-// 		},
-// 		{
-// 			name:  "calculate production rate per minute for speed eight",
-// 			speed: 8,
-// 			want:  26,
-// 		},
-// 		{
-// 			name:  "calculate production rate per minute for speed ten",
-// 			speed: 10,
-// 			want:  28,
-// 		},
-// 	}
+func TestCalculateProductionRatePerMinute(t *testing.T) {
+	tests := []struct {
+		name  string
+		speed int
+		want  int
+	}{
+		{
+			name:  "calculate production rate per minute for speed zero",
+			speed: 0,
+			want:  0,
+		},
+		{
+			name:  "calculate production rate per minute for speed one",
+			speed: 1,
+			want:  3,
+		},
+		{
+			name:  "calculate production rate per minute for speed five",
+			speed: 5,
+			want:  16,
+		},
+		{
+			name:  "calculate production rate per minute for speed eight",
+			speed: 8,
+			want:  26,
+		},
+		{
+			name:  "calculate production rate per minute for speed ten",
+			speed: 10,
+			want:  28,
+		},
+	}
 
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			got := CalculateProductionRatePerMinute(tt.speed)
-// 			if got != tt.want {
-// 				t.Errorf(
-// 					"CalculateWorkingItemsRate(%d) = %d, want %d",
-// 					tt.speed,
-// 					got,
-// 					tt.want,
-// 				)
-// 			}
-// 		})
-// 	}
-// }
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := CalculateProductionRatePerMinute(tt.speed)
+			if got != tt.want {
+				t.Errorf(
+					"CalculateWorkingItemsRate(%d) = %d, want %d",
+					tt.speed,
+					got,
+					tt.want,
+				)
+			}
+		})
+	}
+}
