@@ -160,61 +160,61 @@ func TestSetItem(t *testing.T) {
 	}
 }
 
-// func TestPrefilledSlice(t *testing.T) {
-// 	type args struct {
-// 		value  int
-// 		length int
-// 	}
-// 	tests := []struct {
-// 		name string
-// 		args args
-// 		want []int
-// 	}{
-// 		{
-// 			name: "Create a prefilled slice with value 3",
-// 			args: args{
-// 				value:  3,
-// 				length: 7,
-// 			},
-// 			want: []int{3, 3, 3, 3, 3, 3, 3},
-// 		},
-// 		{
-// 			name: "Create a prefilled slice with value 10",
-// 			args: args{
-// 				value:  10,
-// 				length: 2,
-// 			},
-// 			want: []int{10, 10},
-// 		},
-// 		{
-// 			name: "Length zero",
-// 			args: args{
-// 				value:  3,
-// 				length: 0,
-// 			},
-// 			want: nil,
-// 		},
-// 		{
-// 			name: "Negative length",
-// 			args: args{
-// 				value:  3,
-// 				length: -3,
-// 			},
-// 			want: nil,
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			if got := PrefilledSlice(tt.args.value, tt.args.length); !reflect.DeepEqual(got, tt.want) {
-// 				if tt.want == nil {
-// 					t.Errorf("PrefilledSlice(value:%v, length:%v) = %v, want nil", tt.args.value, tt.args.length, got)
-// 					return
-// 				}
-// 				t.Errorf("PrefilledSlice(value:%v, length:%v) = %v, want %v", tt.args.value, tt.args.length, got, tt.want)
-// 			}
-// 		})
-// 	}
-// }
+func TestPrefilledSlice(t *testing.T) {
+	type args struct {
+		value  int
+		length int
+	}
+	tests := []struct {
+		name string
+		args args
+		want []int
+	}{
+		{
+			name: "Create a prefilled slice with value 3",
+			args: args{
+				value:  3,
+				length: 7,
+			},
+			want: []int{3, 3, 3, 3, 3, 3, 3},
+		},
+		{
+			name: "Create a prefilled slice with value 10",
+			args: args{
+				value:  10,
+				length: 2,
+			},
+			want: []int{10, 10},
+		},
+		{
+			name: "Length zero",
+			args: args{
+				value:  3,
+				length: 0,
+			},
+			want: nil,
+		},
+		{
+			name: "Negative length",
+			args: args{
+				value:  3,
+				length: -3,
+			},
+			want: nil,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := PrefilledSlice(tt.args.value, tt.args.length); !reflect.DeepEqual(got, tt.want) {
+				if tt.want == nil {
+					t.Errorf("PrefilledSlice(value:%v, length:%v) = %v, want nil", tt.args.value, tt.args.length, got)
+					return
+				}
+				t.Errorf("PrefilledSlice(value:%v, length:%v) = %v, want %v", tt.args.value, tt.args.length, got, tt.want)
+			}
+		})
+	}
+}
 
 func TestRemoveItem(t *testing.T) {
 	type args struct {
