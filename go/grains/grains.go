@@ -4,23 +4,18 @@ import (
 	"errors"
 )
 
+const (
+	minSquare int = 0
+	maxSquare int = 64
+)
+
 //Square calculates the number of grains on a given square
 func Square(num int) (uint64, error) {
-	if num <= 0 || num > 64 {
+	if num <= minSquare || num > maxSquare {
 		return 0, errors.New("Invalid square")
 	}
 
-	if num == 1 {
-		return uint64(num), nil
-	}
-
-	total := 1
-
-	for i := 2; i <= num; i++ {
-		total = total << 1
-	}
-
-	return uint64(total), nil
+	return 1 << (num - 1), nil
 }
 
 //Total calculates the total number of grains on the chessboard
