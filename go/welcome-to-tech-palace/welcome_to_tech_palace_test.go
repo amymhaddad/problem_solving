@@ -52,12 +52,12 @@ func TestAddBorder(t *testing.T) {
 			numStarsPerLine: 10,
 			want:            "**********\nWelcome!\n**********",
 		},
-// 		{
-// 			name:            "Add border with 2 stars per line",
-// 			welcomeMessage:  "Hi",
-// 			numStarsPerLine: 2,
-// 			want:            "**\nHi\n**",
-// 		},
+		{
+			name:            "Add border with 2 stars per line",
+			welcomeMessage:  "Hi",
+			numStarsPerLine: 2,
+			want:            "**\nHi\n**",
+		},
 	}
 
 	for _, tt := range tests {

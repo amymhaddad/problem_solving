@@ -14,30 +14,9 @@ func WelcomeMessage(customer string) string {
 func AddBorder(welcomeMsg string, numStarsPerLine int) string {
 	var greeting string
 	greeting = strings.Repeat("*", numStarsPerLine)
-	greeting += "\n" +welcomeMsg + "\n"
-	// greeting = strings.Repeat("\n", 1)
-	// greeting = strings.Repeat(welcomeMsg, 1)
-	// greeting = strings.Repeat("\n", 1)
-//	fmt.Println("H: ", greeting)
-	greeting = strings.Repeat("*", numStarsPerLine)
+	greeting += "\n" + welcomeMsg + "\n"
+	greeting += strings.Repeat("*", numStarsPerLine)
 	return greeting
-
-	// firstHalf, secondHalf := numStarsPerLine, numStarsPerLine
-	//
-	// var greeting string
-	// for firstHalf >= 0 {
-	// 	greeting += "*"
-	// 	firstHalf--
-	// }
-	//
-	// greeting += fmt.Sprintf("\n%s\n", welcomeMsg)
-	//
-	// for secondHalf >= 0 {
-	// 	greeting += "*"
-	// 	secondHalf--
-	// }
-	// fmt.Println(greeting)
-	// return greeting
 }
 
 // CleanupMessage cleans up an old marketing message.
