@@ -16,24 +16,24 @@ var testCases = []struct {
 		strand:      "",
 		expected:    Histogram{'A': 0, 'C': 0, 'G': 0, 'T': 0},
 	},
-	// {
-	// 	description: "can count one nucleotide in single-character input",
-	// 	strand:      "G",
-	// 	expected:    Histogram{'A': 0, 'C': 0, 'G': 1, 'T': 0},
-	// },
-	// {
-	// 	description: "strand with repeated nucleotide",
-	// 	strand:      "GGGGGGG",
-	// 	expected:    Histogram{'A': 0, 'C': 0, 'G': 7, 'T': 0},
-	// },
-	// {
-	// 	description: "strand with multiple nucleotides",
-	// 	strand:      "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC",
-	// 	expected:    Histogram{'A': 20, 'C': 12, 'G': 17, 'T': 21},
-	// },
-	// {
-	// 	description:   "strand with invalid nucleotides",
-	// 	strand:        "AGXXACT",
-	// 	errorExpected: true,
-	// },
+	{
+		description: "can count one nucleotide in single-character input",
+		strand:      "G",
+		expected:    Histogram{'A': 0, 'C': 0, 'G': 1, 'T': 0},
+	},
+	{
+		description: "strand with repeated nucleotide",
+		strand:      "GGGGGGG",
+		expected:    Histogram{'A': 0, 'C': 0, 'G': 7, 'T': 0},
+	},
+	{
+		description: "strand with multiple nucleotides",
+		strand:      "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC",
+		expected:    Histogram{'A': 20, 'C': 12, 'G': 17, 'T': 21},
+	},
+	{
+		description:   "strand with invalid nucleotides",
+		strand:        "AGXXACT",
+		errorExpected: true,
+	},
 }
