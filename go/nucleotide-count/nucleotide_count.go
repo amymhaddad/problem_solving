@@ -2,12 +2,9 @@ package dna
 
 // Histogram is a mapping from nucleotide to its count in given DNA.
 // Choose a suitable data type.
-type Histogram struct {
-	G int
-	A int
-	C int
-	T int
-}
+
+//Can declar empty map but can't init it
+type Histogram map[rune]int
 
 // DNA is a list of nucleotides. Choose a suitable data type.
 type DNA string
@@ -19,8 +16,8 @@ type DNA string
 // The receiver appears in its own argument list between the func keyword and the method name.
 // Here, the Counts method has a receiver of type DNA named d.
 func (d DNA) Counts() (Histogram, error) {
-	//	nucleotides := map[string]bool{"G": true, "A": true, "C": true, "T": true}
-	nucleotides := map[rune]string{65: "A", 67: "C", 71: "G", 84: "T"}
+	hist := Histogram{'G': 0, 'T': 0, 'A':0, 'C':0}
+
 
 	var h Histogram
 
