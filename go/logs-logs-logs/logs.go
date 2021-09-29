@@ -21,7 +21,8 @@ func MessageLen(line string) int {
 
 // LogLevel extracts the log level string from the provided log line.
 func LogLevel(line string) string {
-	panic("Please implement the LogLevel() function")
+	level := strings.Split(line[1:], "]")[0]
+	return strings.ToLower(level)
 }
 
 // Reformat reformats the log line in the format `message (logLevel)`.

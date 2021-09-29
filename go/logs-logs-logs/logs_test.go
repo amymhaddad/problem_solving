@@ -106,45 +106,45 @@ func TestMessageLen(t *testing.T) {
 	}
 }
 
-// func TestLogLevel(t *testing.T) {
-// 	type args struct {
-// 		line string
-// 	}
-// 	tests := []struct {
-// 		name string
-// 		args args
-// 		want string
-// 	}{
-// 		{
-// 			name: "Extract log level from error",
-// 			args: args{
-// 				line: "[ERROR]: Disk full",
-// 			},
-// 			want: "error",
-// 		},
-// 		{
-// 			name: "Extract log level from warning",
-// 			args: args{
-// 				line: "[WARNING]: Unsafe password",
-// 			},
-// 			want: "warning",
-// 		},
-// 		{
-// 			name: "Extract log level from info",
-// 			args: args{
-// 				line: "[INFO]: Timezone changed",
-// 			},
-// 			want: "info",
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			if got := LogLevel(tt.args.line); got != tt.want {
-// 				t.Errorf("LogLevel(\"%s\") = \"%s\", want \"%s\"", escapeWhiteSpace(tt.args.line), got, tt.want)
-// 			}
-// 		})
-// 	}
-// }
+func TestLogLevel(t *testing.T) {
+	type args struct {
+		line string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "Extract log level from error",
+			args: args{
+				line: "[ERROR]: Disk full",
+			},
+			want: "error",
+		},
+		{
+			name: "Extract log level from warning",
+			args: args{
+				line: "[WARNING]: Unsafe password",
+			},
+			want: "warning",
+		},
+		{
+			name: "Extract log level from info",
+			args: args{
+				line: "[INFO]: Timezone changed",
+			},
+			want: "info",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := LogLevel(tt.args.line); got != tt.want {
+				t.Errorf("LogLevel(\"%s\") = \"%s\", want \"%s\"", escapeWhiteSpace(tt.args.line), got, tt.want)
+			}
+		})
+	}
+}
 
 // func TestReformat(t *testing.T) {
 // 	type args struct {
