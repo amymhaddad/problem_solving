@@ -1,6 +1,7 @@
 package logs
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 	"unicode/utf8"
@@ -27,5 +28,5 @@ func LogLevel(line string) string {
 
 // Reformat reformats the log line in the format `message (logLevel)`.
 func Reformat(line string) string {
-	panic("Please implement the Reformat() function")
+	return fmt.Sprintf("%s (%s)", Message(line), LogLevel(line))
 }

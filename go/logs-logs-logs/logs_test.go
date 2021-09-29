@@ -95,7 +95,7 @@ func TestMessageLen(t *testing.T) {
 				line: "[INFO]: Hello, 世界!",
 			},
 			want: 10,
-		 },
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -146,52 +146,52 @@ func TestLogLevel(t *testing.T) {
 	}
 }
 
-// func TestReformat(t *testing.T) {
-// 	type args struct {
-// 		line string
-// 	}
-// 	tests := []struct {
-// 		name string
-// 		args args
-// 		want string
-// 	}{
-// 		{
-// 			name: "Reformat error message",
-// 			args: args{
-// 				line: "[ERROR]: Segmentation fault",
-// 			},
-// 			want: "Segmentation fault (error)",
-// 		},
-// 		{
-// 			name: "Reformat warning message",
-// 			args: args{
-// 				line: "[WARNING]: Decreased performance",
-// 			},
-// 			want: "Decreased performance (warning)",
-// 		},
-// 		{
-// 			name: "Reformat info message",
-// 			args: args{
-// 				line: "[INFO]: Disk defragmented",
-// 			},
-// 			want: "Disk defragmented (info)",
-// 		},
-// 		{
-// 			name: "Reformat message with extra whitespace",
-// 			args: args{
-// 				line: "[ERROR]: \t Corrupt disk\t \t \r\n",
-// 			},
-// 			want: "Corrupt disk (error)",
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			if got := Reformat(tt.args.line); got != tt.want {
-// 				t.Errorf("Reformat(\"%s\") = \"%s\", want \"%s\"", escapeWhiteSpace(tt.args.line), got, tt.want)
-// 			}
-// 		})
-// 	}
-// }
+func TestReformat(t *testing.T) {
+	type args struct {
+		line string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "Reformat error message",
+			args: args{
+				line: "[ERROR]: Segmentation fault",
+			},
+			want: "Segmentation fault (error)",
+		},
+		{
+			name: "Reformat warning message",
+			args: args{
+				line: "[WARNING]: Decreased performance",
+			},
+			want: "Decreased performance (warning)",
+		},
+		{
+			name: "Reformat info message",
+			args: args{
+				line: "[INFO]: Disk defragmented",
+			},
+			want: "Disk defragmented (info)",
+		},
+		{
+			name: "Reformat message with extra whitespace",
+			args: args{
+				line: "[ERROR]: \t Corrupt disk\t \t \r\n",
+			},
+			want: "Corrupt disk (error)",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Reformat(tt.args.line); got != tt.want {
+				t.Errorf("Reformat(\"%s\") = \"%s\", want \"%s\"", escapeWhiteSpace(tt.args.line), got, tt.want)
+			}
+		})
+	}
+}
 
 func escapeWhiteSpace(s string) string {
 	s = strings.ReplaceAll(s, "\\", "\\\\")
