@@ -1,8 +1,17 @@
 package logs
 
+import (
+	"regexp"
+	"strings"
+)
+
 // Message extracts the message from the provided log line.
 func Message(line string) string {
-	panic("Please implement the Message() function")
+	re := regexp.MustCompile(`\[[A-Z]+\]:\s*`)
+	result := re.FindStringSubmatch(line)
+
+	line = strings.ReplaceAll(line, result[0], "")
+	return strings.TrimSpace(line)
 }
 
 // MessageLen counts the amount of characters (runes) in the message of the log line.
