@@ -13,11 +13,10 @@ func (d DNA) Counts() (Histogram, error) {
 	hist := Histogram{'G': 0, 'T': 0, 'A': 0, 'C': 0}
 
 	for _, n := range d {
-		if _, found := hist[n]; found {
-			hist[n]++
-		} else {
+		if _, found := hist[n]; !found {
 			return hist, errors.New("invalid strand")
 		}
+		hist[n]++
 	}
 
 	return hist, nil
