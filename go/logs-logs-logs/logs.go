@@ -25,7 +25,9 @@ func MessageLen(line string) int {
 
 // LogLevel extracts the log level string from the provided log line.
 func LogLevel(line string) string {
-
+	splitLine := strings.Split(line, ":")
+	level := strings.Trim(splitLine[0], "[]")
+	return strings.ToLower(level)
 	// level := strings.Split(line[1:], "]")[0]
 	// return strings.ToLower(level)
 }
