@@ -8,14 +8,8 @@ import (
 
 // Message extracts the message from the provided log line.
 func Message(line string) string {
-	splitLine := strings.Split(line, " ")
-	updatedLine := strings.Join(splitLine[1:], " ")
-	return strings.TrimSpace(strings.TrimSpace(updatedLine))
-
-	// re := regexp.MustCompile(`\[[A-Z]+\]:\s*`)
-	// result := re.FindStringSubmatch(line)
-	// line = strings.ReplaceAll(line, result[0], "")
-	// return strings.TrimSpace(line)
+	updatedLine := strings.Join(strings.Split(line, " ")[1:], " ")
+	return strings.TrimSpace(updatedLine)
 }
 
 // MessageLen counts the amount of characters (runes) in the message of the log line.
@@ -28,8 +22,6 @@ func LogLevel(line string) string {
 	splitLine := strings.Split(line, ":")
 	level := strings.Trim(splitLine[0], "[]")
 	return strings.ToLower(level)
-	// level := strings.Split(line[1:], "]")[0]
-	// return strings.ToLower(level)
 }
 
 // Reformat reformats the log line in the format `message (logLevel)`.
