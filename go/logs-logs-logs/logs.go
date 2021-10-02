@@ -8,8 +8,8 @@ import (
 
 // Message extracts the message from the provided log line.
 func Message(line string) string {
-	updatedLine := strings.Join(strings.Split(line, " ")[1:], " ")
-	return strings.TrimSpace(updatedLine)
+	updatedLine := strings.Split(line, ":")[1]
+	return strings.TrimSpace(updatedLine[1:])
 }
 
 // MessageLen counts the amount of characters (runes) in the message of the log line.
