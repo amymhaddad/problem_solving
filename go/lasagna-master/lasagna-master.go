@@ -48,4 +48,12 @@ func AddSecretIngredient(friendList []string, myList []string) []string {
 
 }
 
-// TODO: define the 'ScaleRecipe()' function
+//ScaleRecipe scales the lasagna recipe
+func ScaleRecipe(quantities []float64, portions int) []float64 {
+	scaledQuantites := make([]float64, len(quantities))
+
+	for i, quantity := range quantities {
+		scaledQuantites[i] = (quantity * float64(portions)) / 2
+	}
+	return scaledQuantites
+}

@@ -1,6 +1,7 @@
 package lasagna
 
 import (
+	"math"
 	"reflect"
 	"testing"
 )
@@ -166,56 +167,56 @@ func TestAddSecretIngredient(t *testing.T) {
 	}
 }
 
-// type scaleRecipeTest struct {
-// 	name     string
-// 	input    []float64
-// 	portions int
-// 	expected []float64
-// }
+type scaleRecipeTest struct {
+	name     string
+	input    []float64
+	portions int
+	expected []float64
+}
 
-// func TestSscaleRecipeTest(t *testing.T) {
-// 	tests := []scaleRecipeTest{
-// 		scaleRecipeTest{
-// 			name:     "scales up correctly",
-// 			input:    []float64{0.5, 250, 150, 3, 0.5},
-// 			portions: 6,
-// 			expected: []float64{1.5, 750, 450, 9, 1.5},
-// 		},
-// 		scaleRecipeTest{
-// 			name:     "scales up correctly (2)",
-// 			input:    []float64{0.6, 300, 1, 0.5, 50, 0.1, 100},
-// 			portions: 3,
-// 			expected: []float64{0.9, 450, 1.5, 0.75, 75, 0.15, 150},
-// 		},
-// 		scaleRecipeTest{
-// 			name:     "scales down correctly",
-// 			input:    []float64{0.5, 250, 150, 3, 0.5},
-// 			portions: 1,
-// 			expected: []float64{0.25, 125, 75, 1.5, 0.25},
-// 		},
-// 		scaleRecipeTest{
-// 			name:     "empty recipe",
-// 			input:    []float64{},
-// 			portions: 100,
-// 			expected: []float64{},
-// 		},
-// 	}
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			inputList := make([]float64, len(tt.input))
-// 			copy(inputList, tt.input)
-// 			got := ScaleRecipe(inputList, tt.portions)
-// 			if len(got) != len(tt.expected) {
-// 				t.Errorf("ScaleRecipe(%v, %d) produced slice of length %d, expected %d", inputList, tt.portions, len(got), len(tt.expected))
-// 			}
-// 			for i := range tt.expected {
-// 				if math.Abs(got[i]-tt.expected[i]) > 0.000001 {
-// 					t.Errorf("Got %f Expected %f for index %d", got[i], tt.expected[i], i)
-// 				}
-// 			}
-// 			if !reflect.DeepEqual(inputList, tt.input) {
-// 				t.Errorf("ScaleRecipe permuted list (was %v, now %v), should not alter inputs", tt.input, inputList)
-// 			}
-// 		})
-// 	}
-// }
+func TestSscaleRecipeTest(t *testing.T) {
+	tests := []scaleRecipeTest{
+		scaleRecipeTest{
+			name:     "scales up correctly",
+			input:    []float64{0.5, 250, 150, 3, 0.5},
+			portions: 6,
+			expected: []float64{1.5, 750, 450, 9, 1.5},
+		},
+		scaleRecipeTest{
+			name:     "scales up correctly (2)",
+			input:    []float64{0.6, 300, 1, 0.5, 50, 0.1, 100},
+			portions: 3,
+			expected: []float64{0.9, 450, 1.5, 0.75, 75, 0.15, 150},
+		},
+		scaleRecipeTest{
+			name:     "scales down correctly",
+			input:    []float64{0.5, 250, 150, 3, 0.5},
+			portions: 1,
+			expected: []float64{0.25, 125, 75, 1.5, 0.25},
+		},
+		scaleRecipeTest{
+			name:     "empty recipe",
+			input:    []float64{},
+			portions: 100,
+			expected: []float64{},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			inputList := make([]float64, len(tt.input))
+			copy(inputList, tt.input)
+			got := ScaleRecipe(inputList, tt.portions)
+			if len(got) != len(tt.expected) {
+				t.Errorf("ScaleRecipe(%v, %d) produced slice of length %d, expected %d", inputList, tt.portions, len(got), len(tt.expected))
+			}
+			for i := range tt.expected {
+				if math.Abs(got[i]-tt.expected[i]) > 0.000001 {
+					t.Errorf("Got %f Expected %f for index %d", got[i], tt.expected[i], i)
+				}
+			}
+			if !reflect.DeepEqual(inputList, tt.input) {
+				t.Errorf("ScaleRecipe permuted list (was %v, now %v), should not alter inputs", tt.input, inputList)
+			}
+		})
+	}
+}
