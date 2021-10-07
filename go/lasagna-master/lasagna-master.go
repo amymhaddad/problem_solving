@@ -1,7 +1,5 @@
 package lasagna
 
-//	"strings"
-
 const (
 	noodleGrams = 50
 	sauceLiters = 0.2
@@ -11,7 +9,7 @@ const (
 //prepare
 func PreparationTime(layers []string, time int) int {
 	if time == 0 {
-		return 2 * len(layers)
+		time = 2
 	}
 	return len(layers) * time
 
@@ -19,14 +17,13 @@ func PreparationTime(layers []string, time int) int {
 
 //Quantities determines the amount of of noodles and sauce needed
 func Quantities(ingredients []string) (int, float64) {
-	var totalNoodleLayers int
-	var totalSauceLayers int
-
+	var totalNoodleLayers, totalSauceLayers int
+	
 	for _, ingredient := range ingredients {
-		if ingredient == "noodles" {
+		switch ingredient {
+		case "noodles":
 			totalNoodleLayers++
-		}
-		if ingredient == "sauce" {
+		case "sauce":
 			totalSauceLayers++
 		}
 	}
@@ -37,23 +34,17 @@ func Quantities(ingredients []string) (int, float64) {
 //AddSecretIngredient creates a new slice of ingredients that includes a
 //friend's special ingredient
 func AddSecretIngredient(friendList []string, myList []string) []string {
-	specialIngredient := friendList[len(friendList)-1]
-	newIngredients := make([]string, len(myList))
-
-	for i, ingredient := range myList {
-		newIngredients[i] = ingredient
-	}
-	newIngredients = append(newIngredients, specialIngredient)
-	return newIngredients
-
+	myList = append(myList, friendList[len(friendList)-1])
+	return myList
 }
 
 //ScaleRecipe scales the lasagna recipe
 func ScaleRecipe(quantities []float64, portions int) []float64 {
 	scaledQuantites := make([]float64, len(quantities))
+	portion := float64(portions) / 2
 
 	for i, quantity := range quantities {
-		scaledQuantites[i] = (quantity * float64(portions)) / 2
+		scaledQuantites[i] = quantity * portion
 	}
 	return scaledQuantites
 }
