@@ -23,22 +23,22 @@ func TestNameSticks(t *testing.T) {
 	}
 }
 
-// func TestSuccessiveRobotsHaveDifferentNames(t *testing.T) {
-// 	n1 := New().getName(t, false)
-// 	n2 := New().getName(t, false)
-// 	if n1 == n2 {
-// 		t.Errorf(`Robots with same name.  Two %s's.`, n1)
-// 	}
-// }
+func TestSuccessiveRobotsHaveDifferentNames(t *testing.T) {
+	n1 := New().getName(t, false)
+	n2 := New().getName(t, false)
+	if n1 == n2 {
+		t.Errorf(`Robots with same name.  Two %s's.`, n1)
+	}
+}
 
-// func TestResetName(t *testing.T) {
-// 	r := New()
-// 	n1 := r.getName(t, false)
-// 	r.Reset()
-// 	if r.getName(t, false) == n1 {
-// 		t.Errorf(`Robot name not cleared on reset.  Still %s.`, n1)
-// 	}
-// }
+func TestResetName(t *testing.T) {
+	r := New()
+	n1 := r.getName(t, false)
+	r.Reset()
+	if r.getName(t, false) == n1 {
+		t.Errorf(`Robot name not cleared on reset.  Still %s.`, n1)
+	}
+}
 
 // // Note if you go for bonus points, this benchmark likely won't be
 // // meaningful.  Bonus thought exercise, why won't it be meaningful?

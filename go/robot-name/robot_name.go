@@ -2,7 +2,6 @@ package robotname
 
 import (
 	"errors"
-	"fmt"
 	"math/rand"
 	"time"
 )
@@ -36,10 +35,11 @@ func (r *Robot) Name() (string, error) {
 
 	//This is for new name
 	name := getNewName()
+
+	//Extract this logic into another fucntion that reset() can use as well 
 	_, found := cache[string(name)]
-	fmt.Println(cache, found)
+
 	if found {
-		//		delete(cache, name)
 		return r.name, errors.New("name is not unique")
 	}
 
@@ -47,6 +47,20 @@ func (r *Robot) Name() (string, error) {
 	r.name = string(name)
 	return string(name), nil
 
+}
+
+//Reset a name to a new name
+func (r *Robot) Reset() string {
+	name := getNewName()
+	_, found := cache[string(name)]
+
+	if found {
+		name = getNewName()
+	}
+
+	cache[string(name)] = true
+	r.name = string(name)
+	return string(name)
 }
 
 func getNewName() string {
