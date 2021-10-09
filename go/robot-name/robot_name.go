@@ -28,12 +28,19 @@ func init() {
 //call the method bc I only need to repeatdily call a portion of what's
 //currently in the method
 func (r *Robot) Name() (string, error) {
+	//if a name already exists on a robot. If robot has a name, I don't want to
+	//reassign it another name
+	if r.name != "" {
+		return r.name, nil
+	}
+
+	//This is for new name
 	name := getNewName()
 	_, found := cache[string(name)]
-	fmt.Println("H: ", found)
+	fmt.Println(cache, found)
 	if found {
-		delete(cache, name)
-		return "", errors.New("name is not unique")
+		//		delete(cache, name)
+		return r.name, errors.New("name is not unique")
 	}
 
 	cache[string(name)] = true

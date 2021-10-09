@@ -14,15 +14,14 @@ func TestNameValid(t *testing.T) {
 	}
 }
 
-// func TestNameSticks(t *testing.T) {
-// 	r := New()
-// 	n1 := r.getName(t, false)
-// 	n2 := r.getName(t, true)
-// 	fmt.Println("NAMES: ", n1, n2)
-// 	if n2 != n1 {
-// 		t.Errorf(`Robot name changed.  Now %s, was %s.`, n2, n1)
-// 	}
-// }
+func TestNameSticks(t *testing.T) {
+	r := New()
+	n1 := r.getName(t, false)
+	n2 := r.getName(t, true)
+	if n2 != n1 {
+		t.Errorf(`Robot name changed.  Now %s, was %s.`, n2, n1)
+	}
+}
 
 // func TestSuccessiveRobotsHaveDifferentNames(t *testing.T) {
 // 	n1 := New().getName(t, false)
