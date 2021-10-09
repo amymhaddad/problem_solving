@@ -18,6 +18,7 @@ func TestNameValid(t *testing.T) {
 // 	r := New()
 // 	n1 := r.getName(t, false)
 // 	n2 := r.getName(t, true)
+// 	fmt.Println("NAMES: ", n1, n2)
 // 	if n2 != n1 {
 // 		t.Errorf(`Robot name changed.  Now %s, was %s.`, n2, n1)
 // 	}
