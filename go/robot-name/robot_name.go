@@ -11,10 +11,9 @@ type Robot struct {
 	name string
 }
 
-//storing each name, not each robot instance of name
-//Can't add to an uninit map. Must use make() or literal syntax
+const nameLength = 5
+
 var cache = make(map[string]bool)
-var nameLength = 5
 var letters = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 var digits = []rune("1234567890")
 
@@ -23,44 +22,39 @@ func init() {
 }
 
 //Name gets a new name for a robot
-//Extract the random name logic into a separate function -- don't repeatidly
-//call the method bc I only need to repeatdily call a portion of what's
-//currently in the method
 func (r *Robot) Name() (string, error) {
-	//if a name already exists on a robot. If robot has a name, I don't want to
-	//reassign it another name
 	if r.name != "" {
 		return r.name, nil
 	}
-
-	//This is for new name
 	name := getNewName()
 
-	//Extract this logic into another fucntion that reset() can use as well 
-	_, found := cache[string(name)]
-
-	if found {
+	repeatedName := getOrSetCache(name)
+	if repeatedName {
 		return r.name, errors.New("name is not unique")
 	}
-
-	cache[string(name)] = true
 	r.name = string(name)
 	return string(name), nil
 
 }
 
-//Reset a name to a new name
+//Reset a robot name to a new name
 func (r *Robot) Reset() string {
 	name := getNewName()
-	_, found := cache[string(name)]
 
-	if found {
+	repeatedName := getOrSetCache(name)
+	if repeatedName {
 		name = getNewName()
 	}
-
-	cache[string(name)] = true
 	r.name = string(name)
 	return string(name)
+}
+
+func getOrSetCache(name string) bool {
+	_, found := cache[string(name)]
+	if !found {
+		cache[string(name)] = true
+	}
+	return found
 }
 
 func getNewName() string {
