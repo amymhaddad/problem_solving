@@ -17,9 +17,11 @@ var cache = make(map[string]bool)
 var letters = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 var digits = []rune("1234567890")
 
-func init() {
-	rand.Seed(time.Now().UnixNano())
-}
+// func init() {
+// 	rand.Seed(time.Now().UnixNano())
+// }
+
+var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 //Name gets a new name for a robot
 func (r *Robot) Name() (string, error) {
@@ -38,15 +40,8 @@ func (r *Robot) Name() (string, error) {
 }
 
 //Reset a robot name to a new name
-func (r *Robot) Reset() string {
-	name := getNewName()
-
-	repeatedName := getOrSetCache(name)
-	if repeatedName {
-		name = getNewName()
-	}
-	r.name = string(name)
-	return string(name)
+func (r *Robot) Reset() {
+	r.name = ""
 }
 
 func getOrSetCache(name string) bool {
