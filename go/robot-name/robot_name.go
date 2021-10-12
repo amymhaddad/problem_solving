@@ -1,7 +1,7 @@
 package robotname
 
 import (
-	"errors"
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -11,31 +11,29 @@ type Robot struct {
 	name string
 }
 
-const nameLength = 5
-
-var cache = make(map[string]bool)
-var letters = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-var digits = []rune("1234567890")
-
-// func init() {
-// 	rand.Seed(time.Now().UnixNano())
-// }
-
+var usedNames = make(map[string]bool)
 var random = rand.New(rand.NewSource(time.Now().UnixNano()))
+var maxNamespace = 26 * 26 * 10 * 10 * 10
+var nameLength = 5
 
 //Name gets a new name for a robot
 func (r *Robot) Name() (string, error) {
 	if r.name != "" {
 		return r.name, nil
 	}
-	name := getNewName()
 
-	repeatedName := getOrSetCache(name)
-	if repeatedName {
-		return r.name, errors.New("name is not unique")
+	if len(usedNames) >= maxNamespace {
+		return "", fmt.Errorf("namespace is exhausted")
 	}
-	r.name = string(name)
-	return string(name), nil
+
+	r.name = getNewName()
+
+	for usedNames[r.name] || len(r.name) < nameLength {
+		r.name = getNewName()
+	}
+
+	usedNames[r.name] = true
+	return r.name, nil
 
 }
 
@@ -44,22 +42,13 @@ func (r *Robot) Reset() {
 	r.name = ""
 }
 
-func getOrSetCache(name string) bool {
-	_, found := cache[string(name)]
-	if !found {
-		cache[string(name)] = true
-	}
-	return found
-}
-
 func getNewName() string {
-	name := make([]rune, nameLength)
-	for i := range name {
-		if i < 2 {
-			name[i] = letters[rand.Intn(len(letters))]
-		} else {
-			name[i] = digits[rand.Intn(len(digits))]
-		}
-	}
-	return string(name)
+	var name string
+
+	letter1 := random.Intn(26) + 'A'
+	letter2 := random.Intn(26) + 'A'
+	digit := random.Intn(1000)
+	name = fmt.Sprintf("%c%c%d", letter1, letter2, digit)
+
+	return name
 }
