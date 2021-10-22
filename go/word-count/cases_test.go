@@ -59,14 +59,14 @@ var testCases = []struct {
 		"Joe can't tell between 'large' and large.",
 		Frequency{"and": 1, "between": 1, "can't": 1, "joe": 1, "large": 2, "tell": 1},
 	},
-	// {
-	// 	"multiple spaces not detected as a word",
-	// 	" multiple   whitespaces",
-	// 	Frequency{"multiple": 1, "whitespaces": 1},
-	// },
-	// {
-	// 	"alternating word separators not detected as a word",
-	// 	",\n,one,\n ,two \n 'three'",
-	// 	Frequency{"one": 1, "three": 1, "two": 1},
-	// },
+	{
+		"multiple spaces not detected as a word",
+		" multiple   whitespaces",
+		Frequency{"multiple": 1, "whitespaces": 1},
+	},
+	{
+		"alternating word separators not detected as a word",
+		",\n,one,\n ,two \n 'three'",
+		Frequency{"one": 1, "three": 1, "two": 1},
+	},
 }
