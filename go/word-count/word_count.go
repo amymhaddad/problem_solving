@@ -15,13 +15,7 @@ func WordCount(s string) Frequency {
 	words := re.FindAllString(strings.ToLower(s), -1)
 
 	for _, word := range words {
-		count, found := wordCounter[word]
-
-		if found {
-			wordCounter[word] = count + 1
-		} else {
-			wordCounter[word] = 1
-		}
+		wordCounter[word]++
 	}
 	return wordCounter
 }
