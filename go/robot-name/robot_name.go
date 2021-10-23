@@ -11,44 +11,14 @@ type Robot struct {
 	name string
 }
 
-var usedNames = make(map[string]bool)
-var random = rand.New(rand.NewSource(time.Now().UnixNano()))
-var maxNamespace = 26 * 26 * 10 * 10 * 10
-var nameLength = 5
+//var random = rand.Seed(time.Now().UnixNano())
 
-//Name gets a new name for a robot
+//Name returns a new Robot name
 func (r *Robot) Name() (string, error) {
-	if r.name != "" {
-		return r.name, nil
-	}
 
-	if len(usedNames) >= maxNamespace {
-		return "", fmt.Errorf("namespace is exhausted")
-	}
+	rand.Seed(time.Now().UnixNano())
+	ch := rand.Intn(65 - 99)
+	fmt.Println(ch)
 
-	r.name = getNewName()
-
-	for usedNames[r.name] || len(r.name) < nameLength {
-		r.name = getNewName()
-	}
-
-	usedNames[r.name] = true
-	return r.name, nil
-
-}
-
-//Reset a robot name to a new name
-func (r *Robot) Reset() {
-	r.name = ""
-}
-
-func getNewName() string {
-	var name string
-
-	letter1 := random.Intn(26) + 'A'
-	letter2 := random.Intn(26) + 'A'
-	digit := random.Intn(1000)
-	name = fmt.Sprintf("%c%c%d", letter1, letter2, digit)
-
-	return name
+	return "hi", nil
 }
