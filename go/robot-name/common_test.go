@@ -16,6 +16,7 @@ func New() *Robot { return new(Robot) }
 func (r *Robot) getName(t testing.TB, expectSeen bool) string {
 	t.Helper()
 	//this is a method on robot. I can tell this by the dot notation: r.Name()
+	//Call name on the instance of Robot (r) and extract the vars associated w/it: name, err
 	newName, err := r.Name()
 	if err != nil {
 		t.Fatalf("Name() returned unexpected error: %v", err)

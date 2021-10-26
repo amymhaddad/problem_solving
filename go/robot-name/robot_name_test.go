@@ -22,7 +22,7 @@ func TestNameValid(t *testing.T) {
 // 		t.Errorf(`Robot name changed.  Now %s, was %s.`, n2, n1)
 // 	}
 // }
-//
+
 // func TestSuccessiveRobotsHaveDifferentNames(t *testing.T) {
 // 	n1 := New().getName(t, false)
 // 	n2 := New().getName(t, false)
