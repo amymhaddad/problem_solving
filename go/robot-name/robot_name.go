@@ -21,7 +21,23 @@ var usedNames = make(map[string]bool)
 
 //Name returns a new Robot name
 func (r *Robot) Name() (string, error) {
+	if r.name != "" {
+		return r.name, nil
+	}
+
 	name := getName()
+
+	for {
+		_, found := usedNames[name]
+		if found {
+			name = getName()
+			continue
+		}
+		usedNames[name] = true
+		r.name = name
+		break
+	}
+
 	return name, nil
 }
 
@@ -29,6 +45,5 @@ func getName() string {
 	ch1 := rand.Intn(26) + 'A'
 	ch2 := rand.Intn(26) + 'A'
 	digits := rand.Intn(1000)
-
 	return fmt.Sprintf("%c%c%d", ch1, ch2, digits)
 }
