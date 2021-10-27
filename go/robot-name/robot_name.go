@@ -11,13 +11,13 @@ type Robot struct {
 	name string
 }
 
-//this doesn't give me a new char each time - but I can use as a value
-//var random = rand.New(rand.NewSource(time.Now().UnixNano()))
+var usedNames = make(map[string]bool)
+
+const nameLength = 5
+
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
-
-var usedNames = make(map[string]bool)
 
 //Name returns a new Robot name
 func (r *Robot) Name() (string, error) {
@@ -29,7 +29,7 @@ func (r *Robot) Name() (string, error) {
 
 	for {
 		_, found := usedNames[name]
-		if found {
+		if found || len(name) < 5 {
 			name = getName()
 			continue
 		}
@@ -37,8 +37,12 @@ func (r *Robot) Name() (string, error) {
 		r.name = name
 		break
 	}
-
 	return name, nil
+}
+
+//Reset resets a robot's name to be empty
+func (r *Robot) Reset() {
+	r.name = ""
 }
 
 func getName() string {
