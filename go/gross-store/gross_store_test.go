@@ -39,57 +39,57 @@ func TestUnits(t *testing.T) {
 
 }
 
-// func TestAddItem(t *testing.T) {
-// 	tests := []struct {
-// 		name     string
-// 		entry    []entry
-// 		expected bool
-// 	}{
-// 		{
-// 			"Invalid measurement unit",
-// 			[]entry{
-// 				{"pasta", "", 0},
-// 				{"onion", "quarter", 0},
-// 				{"pasta", "pound", 0},
-// 			},
-// 			false,
-// 		},
-// 		{
-// 			"Valid measurement unit",
-// 			[]entry{
-// 				{"peas", "quarter_of_a_dozen", 3},
-// 				{"tomato", "half_of_a_dozen", 6},
-// 				{"chili", "dozen", 12},
-// 				{"cucumber", "small_gross", 120},
-// 				{"potato", "gross", 144},
-// 				{"zucchini", "great_gross", 1728},
-// 			},
-// 			true,
-// 		},
-// 	}
-// 	units := Units()
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			bill := NewBill()
-// 			for _, item := range tt.entry {
-// 				ok := AddItem(bill, units, item.name, item.unit)
-// 				if ok != tt.expected {
-// 					t.Errorf("Expected %t from AddItem, found %t at %v", tt.expected, ok, item.name)
-// 				}
-//
-// 				itemQty, ok := bill[item.name]
-// 				if ok != tt.expected {
-// 					t.Errorf("Could not find item %s in customer bill", item.name)
-// 				}
-//
-// 				if itemQty != item.qty {
-// 					t.Errorf("Expected %s to have quantity %d in customer bill, found %d", item.name, item.qty, itemQty)
-// 				}
-// 			}
-// 		})
-// 	}
-// }
-//
+func TestAddItem(t *testing.T) {
+	tests := []struct {
+		name     string
+		entry    []entry
+		expected bool
+	}{
+		{
+			"Invalid measurement unit",
+			[]entry{
+				{"pasta", "", 0},
+				{"onion", "quarter", 0},
+				{"pasta", "pound", 0},
+			},
+			false,
+		},
+		{
+			"Valid measurement unit",
+			[]entry{
+				{"peas", "quarter_of_a_dozen", 3},
+				{"tomato", "half_of_a_dozen", 6},
+				{"chili", "dozen", 12},
+				{"cucumber", "small_gross", 120},
+				{"potato", "gross", 144},
+				{"zucchini", "great_gross", 1728},
+			},
+			true,
+		},
+	}
+	units := Units()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			bill := NewBill()
+			for _, item := range tt.entry {
+				ok := AddItem(bill, units, item.name, item.unit)
+				if ok != tt.expected {
+					t.Errorf("Expected %t from AddItem, found %t at %v", tt.expected, ok, item.name)
+				}
+
+				itemQty, ok := bill[item.name]
+				if ok != tt.expected {
+					t.Errorf("Could not find item %s in customer bill", item.name)
+				}
+
+				if itemQty != item.qty {
+					t.Errorf("Expected %s to have quantity %d in customer bill, found %d", item.name, item.qty, itemQty)
+				}
+			}
+		})
+	}
+}
+
 // func TestRemoveItem(t *testing.T) {
 // 	type expectedItem struct {
 // 		name   string
@@ -170,16 +170,16 @@ func TestUnits(t *testing.T) {
 // 	}
 // }
 
-// func TestNewBill(t *testing.T) {
-// 	// Success, zero out the  bill
-// 	t.Run("Should reset customerbill", func(t *testing.T) {
-// 		bill := NewBill()
+func TestNewBill(t *testing.T) {
+	// Success, zero out the  bill
+	t.Run("Should reset customerbill", func(t *testing.T) {
+		bill := NewBill()
 
-// 		if len(bill) != 0 {
-// 			t.Error("Customer bill must be empty")
-// 		}
-// 	})
-// }
+		if len(bill) != 0 {
+			t.Error("Customer bill must be empty")
+		}
+	})
+}
 
 // func TestGetItem(t *testing.T) {
 // 	type expectedItem struct {
