@@ -48,12 +48,11 @@ func RemoveItem(bill, units map[string]int, item, unit string) bool {
 		return false
 	}
 
+	if billQuantity-unitQuantity <= 0 {
+		delete(bill, item)
+		return true
+	}
 	bill[item] = billQuantity - unitQuantity
-	//	fmt.Println(bill, item, unit, a)
-	// if billQuantity == 0 {
-	// 	fmt.Println("Here", bill)
-	// 	return true
-	// }
 	return true
 }
 
