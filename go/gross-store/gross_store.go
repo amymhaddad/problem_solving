@@ -19,23 +19,42 @@ func NewBill() map[string]int {
 }
 
 // AddItem adds an item to customer bill.
-//2 vars in succession are the same type
 func AddItem(bill, units map[string]int, item, unit string) bool {
 	_, found := units[unit]
 	if !found {
 		return false
 	}
-	total := units[unit]
-	//	fmt.Println("total: ", total)
-	bill[item] = total
-
-	//	fmt.Println("bill", bill)
+	bill[item] = units[unit]
 	return true
 }
 
 // RemoveItem removes an item from customer bill.
 func RemoveItem(bill, units map[string]int, item, unit string) bool {
-	panic("Please implement the RemoveItem() function")
+	_, foundItem := bill[item]
+	if !foundItem {
+		return false
+	}
+
+	_, foundUnit := units[unit]
+	if !foundUnit {
+		return false
+	}
+
+	billQuantity, _ := bill[item]
+	unitQuantities := Units()
+	unitQuantity, _ := unitQuantities[unit]
+
+	if billQuantity < unitQuantity {
+		return false
+	}
+
+	bill[item] = billQuantity - unitQuantity
+	//	fmt.Println(bill, item, unit, a)
+	// if billQuantity == 0 {
+	// 	fmt.Println("Here", bill)
+	// 	return true
+	// }
+	return true
 }
 
 // GetItem returns the quantity of an item that the customer has in his/her bill.
