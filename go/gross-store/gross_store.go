@@ -31,16 +31,13 @@ func AddItem(bill, units map[string]int, item, unit string) bool {
 // RemoveItem removes an item from customer bill.
 func RemoveItem(bill, units map[string]int, item, unit string) bool {
 	_, foundItem := bill[item]
-	if !foundItem {
-		return false
-	}
-
 	_, foundUnit := units[unit]
-	if !foundUnit {
+
+	if !foundItem || !foundUnit {
 		return false
 	}
 
-	billQuantity, _ := bill[item]
+	billQuantity := billQuantities(bill, item)
 	unitQuantities := Units()
 	unitQuantity, _ := unitQuantities[unit]
 
@@ -48,7 +45,7 @@ func RemoveItem(bill, units map[string]int, item, unit string) bool {
 		return false
 	}
 
-	if billQuantity-unitQuantity <= 0 {
+	if billQuantity-unitQuantity == 0 {
 		delete(bill, item)
 		return true
 	}
@@ -58,5 +55,13 @@ func RemoveItem(bill, units map[string]int, item, unit string) bool {
 
 // GetItem returns the quantity of an item that the customer has in his/her bill.
 func GetItem(bill map[string]int, item string) (int, bool) {
-	panic("Please implement the GetItem() function")
+	total := billQuantities(bill, item)
+	if total == 0 {
+		return 0, false
+	}
+	return total, true
+}
+
+func billQuantities(bill map[string]int, item string) int {
+	return bill[item]
 }
