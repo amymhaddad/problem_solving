@@ -1,7 +1,5 @@
 package gross
 
-import "fmt"
-
 // Units stores the Gross Store unit measurements.
 func Units() map[string]int {
 	return map[string]int{
@@ -23,13 +21,15 @@ func NewBill() map[string]int {
 // AddItem adds an item to customer bill.
 //2 vars in succession are the same type
 func AddItem(bill, units map[string]int, item, unit string) bool {
-	//	_, found := units[item]
-	fmt.Println("unit: ", bill, units, item, unit)
-	// if !found {
+	_, found := units[unit]
+	if !found {
+		return false
+	}
+	total := units[unit]
+	//	fmt.Println("total: ", total)
+	bill[item] = total
 
-	// 	return false
-	// }
-	// units[item]++
+	//	fmt.Println("bill", bill)
 	return true
 }
 
