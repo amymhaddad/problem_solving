@@ -41,15 +41,14 @@ func RemoveItem(bill, units map[string]int, item, unit string) bool {
 	unitQuantities := Units()
 	unitQuantity, _ := unitQuantities[unit]
 
-	if billQuantity < unitQuantity {
+	switch newQuantity := billQuantity - unitQuantity; {
+	case newQuantity < 0:
 		return false
-	}
-
-	if billQuantity-unitQuantity == 0 {
+	case newQuantity == 0:
 		delete(bill, item)
-		return true
+	default:
+		bill[item] = billQuantity - unitQuantity
 	}
-	bill[item] = billQuantity - unitQuantity
 	return true
 }
 
