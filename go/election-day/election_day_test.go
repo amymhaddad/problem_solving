@@ -122,31 +122,31 @@ func TestNewElectionResult(t *testing.T) {
 	}
 }
 
-// func TestDisplayResult(t *testing.T) {
-// 	tests := []struct {
-// 		name   string
-// 		result *ElectionResult
-// 		wanted string
-// 	}{
-// 		{
-// 			name: "Call to DisplayResult for Jonh with 5 votes",
-// 			result: &ElectionResult{
-// 				Name:  "John",
-// 				Votes: 5,
-// 			},
-// 			wanted: "John (5)",
-// 		},
-// 	}
-//
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			if result := DisplayResult(tt.result); result != tt.wanted {
-// 				t.Errorf("DisplayResult(%#v) = %s, wanted %s", *tt.result, result, tt.wanted)
-// 			}
-// 		})
-// 	}
-// }
-//
+func TestDisplayResult(t *testing.T) {
+	tests := []struct {
+		name   string
+		result *ElectionResult
+		wanted string
+	}{
+		{
+			name: "Call to DisplayResult for Jonh with 5 votes",
+			result: &ElectionResult{
+				Name:  "John",
+				Votes: 5,
+			},
+			wanted: "John (5)",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if result := DisplayResult(tt.result); result != tt.wanted {
+				t.Errorf("DisplayResult(%#v) = %s, wanted %s", *tt.result, result, tt.wanted)
+			}
+		})
+	}
+}
+
 // func TestDecrementVotesOfCandidate(t *testing.T) {
 // 	tests := []struct {
 // 		name      string
