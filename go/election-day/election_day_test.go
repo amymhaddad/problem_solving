@@ -147,34 +147,34 @@ func TestDisplayResult(t *testing.T) {
 	}
 }
 
-// func TestDecrementVotesOfCandidate(t *testing.T) {
-// 	tests := []struct {
-// 		name      string
-// 		candidate string
-// 		results   map[string]int
-// 		wanted    int
-// 	}{
-// 		{
-// 			name:      "Call to DecrementVotesOfCandidate for Jonh with 5 votes",
-// 			candidate: "John",
-// 			results: map[string]int{
-// 				"John": 3,
-// 			},
-// 			wanted: 2,
-// 		},
-// 	}
-//
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			DecrementVotesOfCandidate(tt.results, tt.candidate)
-// 			if votes, ok := tt.results[tt.candidate]; !ok || votes != tt.wanted {
-// 				t.Errorf("DecrementVotesOfCandidate(%v) | wanted %d, got %d",
-// 					tt.results, tt.wanted, votes)
-// 			}
-// 		})
-// 	}
-// }
-//
+func TestDecrementVotesOfCandidate(t *testing.T) {
+	tests := []struct {
+		name      string
+		candidate string
+		results   map[string]int
+		wanted    int
+	}{
+		{
+			name:      "Call to DecrementVotesOfCandidate for Jonh with 5 votes",
+			candidate: "John",
+			results: map[string]int{
+				"John": 3,
+			},
+			wanted: 2,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			DecrementVotesOfCandidate(tt.results, tt.candidate)
+			if votes, ok := tt.results[tt.candidate]; !ok || votes != tt.wanted {
+				t.Errorf("DecrementVotesOfCandidate(%v) | wanted %d, got %d",
+					tt.results, tt.wanted, votes)
+			}
+		})
+	}
+}
+
 func intPtrRepresentation(p *int) string {
 	if p == nil {
 		return "nil"
