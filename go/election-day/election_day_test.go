@@ -29,35 +29,35 @@ func TestNewVoteCounter(t *testing.T) {
 	}
 }
 
-// func TestVoteCount(t *testing.T) {
-// 	twoVotes := 2
-//
-// 	tests := []struct {
-// 		name     string
-// 		counter  *int
-// 		expected int
-// 	}{
-// 		{
-// 			name:     "Call to VoteCount with a nil argument",
-// 			counter:  nil,
-// 			expected: 0,
-// 		},
-// 		{
-// 			name:     "Call to VoteCount with a pointer to an int with a value of 2",
-// 			counter:  &twoVotes,
-// 			expected: 2,
-// 		},
-// 	}
-//
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			if got := VoteCount(tt.counter); got != tt.expected {
-// 				t.Fatalf("VoteCount(%v) = %d, want %d", intPtrRepresentation(tt.counter), got, tt.expected)
-// 			}
-// 		})
-// 	}
-// }
-//
+func TestVoteCount(t *testing.T) {
+	twoVotes := 2
+
+	tests := []struct {
+		name     string
+		counter  *int
+		expected int
+	}{
+		{
+			name:     "Call to VoteCount with a nil argument",
+			counter:  nil,
+			expected: 0,
+		},
+		{
+			name:     "Call to VoteCount with a pointer to an int with a value of 2",
+			counter:  &twoVotes,
+			expected: 2,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := VoteCount(tt.counter); got != tt.expected {
+				t.Fatalf("VoteCount(%v) = %d, want %d", intPtrRepresentation(tt.counter), got, tt.expected)
+			}
+		})
+	}
+}
+
 // func TestIncrementVoteCount(t *testing.T) {
 // 	twoVotes := 2
 //
