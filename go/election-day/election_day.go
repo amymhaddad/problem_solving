@@ -23,7 +23,9 @@ func IncrementVoteCount(counter *int, increment int) {
 
 // NewElectionResult creates a new election result
 func NewElectionResult(candidateName string, votes int) *ElectionResult {
-
+	var result *ElectionResult
+	result = &ElectionResult{Name: candidateName, Votes: votes}
+	return result
 }
 
 // DisplayResult creates a message with the result to be displayed
