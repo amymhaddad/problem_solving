@@ -1,7 +1,5 @@
 package electionday
 
-import "fmt"
-
 // NewVoteCounter returns a new vote counter with
 // a given number of inital votes.
 func NewVoteCounter(initialVotes int) *int {
@@ -12,7 +10,6 @@ func NewVoteCounter(initialVotes int) *int {
 
 // VoteCount extracts the number of votes from a counter.
 func VoteCount(counter *int) int {
-	fmt.Println("counter: ", counter)
 	if counter == nil {
 		return 0
 	}
@@ -21,12 +18,12 @@ func VoteCount(counter *int) int {
 
 // IncrementVoteCount increments the value in a vote counter
 func IncrementVoteCount(counter *int, increment int) {
-	panic("Please implement the IncrementVoteCount() function")
+	*counter += increment
 }
 
 // NewElectionResult creates a new election result
 func NewElectionResult(candidateName string, votes int) *ElectionResult {
-	panic("Please implement the NewElectionResult() function")
+
 }
 
 // DisplayResult creates a message with the result to be displayed

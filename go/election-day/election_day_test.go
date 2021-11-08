@@ -58,70 +58,70 @@ func TestVoteCount(t *testing.T) {
 	}
 }
 
-// func TestIncrementVoteCount(t *testing.T) {
-// 	twoVotes := 2
-//
-// 	tests := []struct {
-// 		name      string
-// 		counter   *int
-// 		increment int
-// 		expected  int
-// 	}{
-// 		{
-// 			name:      "Call to IncrementVoteCount with a pointer to an int with a value of 2 and increment of 2",
-// 			counter:   &twoVotes,
-// 			increment: 2,
-// 			expected:  4,
-// 		},
-// 	}
-//
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			before := intPtrRepresentation(tt.counter)
-// 			IncrementVoteCount(tt.counter, tt.increment)
-// 			after := intPtrRepresentation(tt.counter)
-//
-// 			if tt.counter == nil {
-// 				t.Errorf("counter before: %s | counter after: %v | wanted: &%d", before, after, tt.expected)
-// 			}
-//
-// 			if tt.counter != nil && *tt.counter != tt.expected {
-// 				t.Errorf("counter before: %s | counter after: %v | wanted: &%d", before, after, tt.expected)
-// 			}
-// 		})
-// 	}
-// }
-//
-// func TestNewElectionResult(t *testing.T) {
-// 	tests := []struct {
-// 		name          string
-// 		candidateName string
-// 		votes         int
-// 		wanted        ElectionResult
-// 	}{
-// 		{
-// 			name:          "Call to NewElectionResult for Peter with 2 votes",
-// 			candidateName: "Peter",
-// 			votes:         2,
-// 			wanted: ElectionResult{
-// 				Name:  "Peter",
-// 				Votes: 2,
-// 			},
-// 		},
-// 	}
-//
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			result := NewElectionResult(tt.candidateName, tt.votes)
-//
-// 			if result == nil || result.Name != tt.wanted.Name || result.Votes != tt.wanted.Votes {
-// 				t.Errorf("NewElectionResult(\"%s\", %d) = %#v, wanted %#v",
-// 					tt.candidateName, tt.votes, result, tt.wanted)
-// 			}
-// 		})
-// 	}
-// }
-//
+func TestIncrementVoteCount(t *testing.T) {
+	twoVotes := 2
+
+	tests := []struct {
+		name      string
+		counter   *int
+		increment int
+		expected  int
+	}{
+		{
+			name:      "Call to IncrementVoteCount with a pointer to an int with a value of 2 and increment of 2",
+			counter:   &twoVotes,
+			increment: 2,
+			expected:  4,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			before := intPtrRepresentation(tt.counter)
+			IncrementVoteCount(tt.counter, tt.increment)
+			after := intPtrRepresentation(tt.counter)
+
+			if tt.counter == nil {
+				t.Errorf("counter before: %s | counter after: %v | wanted: &%d", before, after, tt.expected)
+			}
+
+			if tt.counter != nil && *tt.counter != tt.expected {
+				t.Errorf("counter before: %s | counter after: %v | wanted: &%d", before, after, tt.expected)
+			}
+		})
+	}
+}
+
+func TestNewElectionResult(t *testing.T) {
+	tests := []struct {
+		name          string
+		candidateName string
+		votes         int
+		wanted        ElectionResult
+	}{
+		{
+			name:          "Call to NewElectionResult for Peter with 2 votes",
+			candidateName: "Peter",
+			votes:         2,
+			wanted: ElectionResult{
+				Name:  "Peter",
+				Votes: 2,
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := NewElectionResult(tt.candidateName, tt.votes)
+
+			if result == nil || result.Name != tt.wanted.Name || result.Votes != tt.wanted.Votes {
+				t.Errorf("NewElectionResult(\"%s\", %d) = %#v, wanted %#v",
+					tt.candidateName, tt.votes, result, tt.wanted)
+			}
+		})
+	}
+}
+
 // func TestDisplayResult(t *testing.T) {
 // 	tests := []struct {
 // 		name   string
