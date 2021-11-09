@@ -8,14 +8,10 @@ import (
 var namePat = regexp.MustCompile(`^[A-Z]{2}\d{3}$`)
 var seen = map[string]int{}
 
-//Returns a pointer to a new robot
 func New() *Robot { return new(Robot) }
 
-// getName is a test helper function to facilitate optionally checking for seen robot names.
 func (r *Robot) getName(t testing.TB, expectSeen bool) string {
 	t.Helper()
-	//this is a method on robot. I can tell this by the dot notation: r.Name()
-	//Call name on the instance of Robot (r) and extract the vars associated w/it: name, err
 	newName, err := r.Name()
 	if err != nil {
 		t.Fatalf("Name() returned unexpected error: %v", err)

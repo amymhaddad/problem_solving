@@ -19,28 +19,28 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-//SHould this be Name or getName()
 //Name creates a robot name
 func (r *Robot) Name() (string, error) {
-
-	name := getName()
-
-	_, found := usedNames[name]
-
-	for found || len(name) < nameLength {
-		name = getName()
+	if len(r.name) == nameLength {
+		return r.name, nil
 	}
-	usedNames[name] = true
-	fmt.Println(name)
-	return name, nil
 
+	r.name = generateName()
+	for usedNames[r.name] || len(r.name) < nameLength {
+		r.name = generateName()
+	}
+	usedNames[r.name] = true
+	return r.name, nil
 }
 
-func getName() string {
+//Reset resets a robot's name
+func (r *Robot) Reset() {
+	r.name = ""
+}
+
+func generateName() string {
 	ch1 := rand.Intn(26) + 'A'
 	ch2 := rand.Intn(26) + 'A'
 	digits := rand.Intn(1000)
-	fmt.Println("chrs", ch1, digits)
 	return fmt.Sprintf("%c%c%d", ch1, ch2, digits)
-
 }
