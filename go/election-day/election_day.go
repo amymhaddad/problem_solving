@@ -5,9 +5,7 @@ import "fmt"
 // NewVoteCounter returns a new vote counter with
 // a given number of inital votes.
 func NewVoteCounter(initialVotes int) *int {
-	var newCounter *int
-	newCounter = &initialVotes
-	return newCounter
+	return &initialVotes
 }
 
 // VoteCount extracts the number of votes from a counter.
@@ -25,9 +23,7 @@ func IncrementVoteCount(counter *int, increment int) {
 
 // NewElectionResult creates a new election result
 func NewElectionResult(candidateName string, votes int) *ElectionResult {
-	var result *ElectionResult
-	result = &ElectionResult{Name: candidateName, Votes: votes}
-	return result
+	return &ElectionResult{Name: candidateName, Votes: votes}
 }
 
 // DisplayResult creates a message with the result to be displayed
