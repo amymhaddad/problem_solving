@@ -10,12 +10,18 @@ type Frequency map[string]int
 
 //WordCount counts the number of times a word appears in a given string
 func WordCount(s string) Frequency {
-	wordCounter := make(Frequency)
-	re := regexp.MustCompile("[0-9a-z]+('[a-z])?")
-	words := re.FindAllString(strings.ToLower(s), -1)
+	foundWords := make(Frequency)
+	s = strings.ToLower(s)
+	regex := regexp.MustCompile("[a-z0-9]+('[a-z])?")
+	found := regex.FindAllString(s, -1)
 
-	for _, word := range words {
-		wordCounter[word]++
+	for _, word := range found {
+		_, found := foundWords[word]
+		if !found {
+			foundWords[word] = 1
+		} else {
+			foundWords[word]++
+		}
 	}
-	return wordCounter
+	return foundWords
 }
