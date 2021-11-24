@@ -2,6 +2,12 @@ package protein
 
 import "errors"
 
+//ErrStop raises an error if a stop codon is encountered
+var ErrStop = errors.New("stop")
+
+//ErrInvalidBase raises an error if an invalid base is encountered
+var ErrInvalidBase = errors.New("invalid base")
+
 var stopCondons = map[string]string{
 	"UAA": "",
 	"UAG": "",
@@ -35,10 +41,10 @@ func FromCodon(codon string) (string, error) {
 	_, foundStopCondon := stopCondons[codon]
 
 	if foundStopCondon {
-		return "", errors.New("stop")
+		return "", ErrStop
 	} else if foundValidCondon {
 		return value, nil
 	} else {
-		return "", errors.New("invalid base")
+		return "", ErrInvalidBase
 	}
 }
