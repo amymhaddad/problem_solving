@@ -8,13 +8,7 @@ var ErrStop = errors.New("stop")
 //ErrInvalidBase raises an error if an invalid base is encountered
 var ErrInvalidBase = errors.New("invalid base")
 
-var stopCondons = map[string]string{
-	"UAA": "",
-	"UAG": "",
-	"UGA": "",
-}
-
-var validCondons = map[string]string{
+var allCodons = map[string]string{
 	"AUG": "Methionine",
 	"UUU": "Phenylalanine",
 	"UUC": "Phenylalanine",
@@ -29,6 +23,9 @@ var validCondons = map[string]string{
 	"UGU": "Cysteine",
 	"UGC": "Cysteine",
 	"UGG": "Tryptophan",
+	"UAA": "",
+	"UAG": "",
+	"UGA": "",
 }
 
 func FromRNA(rna string) ([]string, error) {
@@ -37,12 +34,11 @@ func FromRNA(rna string) ([]string, error) {
 
 //FromCondon returns the rna protein
 func FromCodon(codon string) (string, error) {
-	value, foundValidCondon := validCondons[codon]
-	_, foundStopCondon := stopCondons[codon]
+	value, found := allCodons[codon]
 
-	if foundStopCondon {
-		return "", ErrStop
-	} else if foundValidCondon {
+	if found && value == "" {
+		return value, ErrStop
+	} else if value != "" {
 		return value, nil
 	} else {
 		return "", ErrInvalidBase

@@ -124,7 +124,7 @@ func TestCodon(t *testing.T) {
 // 		[]string{"Methionine", "Phenylalanine", "Serine"},
 // 		nil,
 // 	},
-// 	{
+//	{
 // 		"AUGUUUUGG",
 // 		[]string{"Methionine", "Phenylalanine", "Tryptophan"},
 // 		nil,
