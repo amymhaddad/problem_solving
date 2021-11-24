@@ -1,6 +1,7 @@
 package protein
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -112,18 +113,18 @@ func TestCodon(t *testing.T) {
 	}
 }
 
-// type rnaCase struct {
-// 	input         string
-// 	expected      []string
-// 	errorExpected error
-// }
+type rnaCase struct {
+	input         string
+	expected      []string
+	errorExpected error
+}
 
-// var proteinTestCases = []rnaCase{
-// 	{
-// 		"AUGUUUUCUUAAAUG",
-// 		[]string{"Methionine", "Phenylalanine", "Serine"},
-// 		nil,
-// 	},
+var proteinTestCases = []rnaCase{
+	{
+		"AUGUUUUCUUAAAUG",
+		[]string{"Methionine", "Phenylalanine", "Serine"},
+		nil,
+	},
 //	{
 // 		"AUGUUUUGG",
 // 		[]string{"Methionine", "Phenylalanine", "Tryptophan"},
@@ -144,26 +145,26 @@ func TestCodon(t *testing.T) {
 // 		[]string{"Tryptophan"},
 // 		ErrInvalidBase,
 // 	},
-// }
+}
 
-// func TestProtein(t *testing.T) {
-// 	for _, test := range proteinTestCases {
-// 		actual, err := FromRNA(test.input)
-// 		if test.errorExpected != nil {
-// 			if test.errorExpected != err {
-// 				t.Fatalf("FAIL: RNA translation test: %s\nExpected error: %q\nActual error: %q",
-// 					test.input, test.errorExpected, err)
-// 			}
-// 		} else if err != nil {
-// 			t.Fatalf("FAIL: RNA translation test: %s\nExpected: %s\nGot error: %q",
-// 				test.input, test.expected, err)
-// 		}
-// 		if !reflect.DeepEqual(actual, test.expected) {
-// 			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
-// 		}
-// 		t.Logf("PASS: RNA translation test: %s", test.input)
-// 	}
-// }
+func TestProtein(t *testing.T) {
+	for _, test := range proteinTestCases {
+		actual, err := FromRNA(test.input)
+		if test.errorExpected != nil {
+			if test.errorExpected != err {
+				t.Fatalf("FAIL: RNA translation test: %s\nExpected error: %q\nActual error: %q",
+					test.input, test.errorExpected, err)
+			}
+		} else if err != nil {
+			t.Fatalf("FAIL: RNA translation test: %s\nExpected: %s\nGot error: %q",
+				test.input, test.expected, err)
+		}
+		if !reflect.DeepEqual(actual, test.expected) {
+			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
+		}
+		t.Logf("PASS: RNA translation test: %s", test.input)
+	}
+}
 
 func BenchmarkCodon(b *testing.B) {
 	if testing.Short() {
