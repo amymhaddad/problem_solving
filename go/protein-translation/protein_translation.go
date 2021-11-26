@@ -2,7 +2,6 @@ package protein
 
 import (
 	"errors"
-	"fmt"
 )
 
 //ErrStop raises an error if a stop codon is encountered
@@ -31,36 +30,32 @@ var allCodons = map[string]string{
 	"UGA": "",
 }
 
+//FromRNA returns a slice of protein strings
 func FromRNA(rna string) ([]string, error) {
-	var s []string
+	var proteins []string
+	seen := make(map[string]bool)
 
-	start := 0
-	stop := 3
-	codonLength := 3
-	for start < len(rna) {
-		codon := rna[start:stop]
-		fmt.Println(start, codon)
-		if len(rna)-start < codonLength {
-			fmt.Println("here", start, stop)
-			codon = rna[start:]
+	for i := 0; i <= len(rna)-3; i += 3 {
+		codon, err := FromCodon(rna[i : i+3])
+
+		switch err {
+		case ErrInvalidBase:
+			return proteins, err
+		case ErrStop:
+			return proteins, nil
 		}
 
-		protein, err := FromCodon(codon)
-		if err == nil {
-			s = append(s, protein)
+		if seen[codon] || codon == "" {
+			continue
 		}
-		start = stop
-		stop += 3
-		if start >= len(rna) {
-			break
-		}
-		//	fmt.Println(start, stop, len(rna))
 
+		proteins = append(proteins, codon)
+		seen[codon] = true
 	}
-	return s, nil
+	return proteins, nil
 }
 
-//FromCondon returns the rna protein
+//FromCodon returns the rna protein
 func FromCodon(codon string) (string, error) {
 	value, found := allCodons[codon]
 

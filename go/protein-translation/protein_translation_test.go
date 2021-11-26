@@ -125,26 +125,26 @@ var proteinTestCases = []rnaCase{
 		[]string{"Methionine", "Phenylalanine", "Serine"},
 		nil,
 	},
-//	{
-// 		"AUGUUUUGG",
-// 		[]string{"Methionine", "Phenylalanine", "Tryptophan"},
-// 		nil,
-// 	},
-// 	{
-// 		"AUGUUUUAA",
-// 		[]string{"Methionine", "Phenylalanine"},
-// 		nil,
-// 	},
-// 	{
-// 		"UGGUGUUAUUAAUGGUUU",
-// 		[]string{"Tryptophan", "Cysteine", "Tyrosine"},
-// 		nil,
-// 	},
-// 	{
-// 		"UGGAGAAUUAAUGGUUU",
-// 		[]string{"Tryptophan"},
-// 		ErrInvalidBase,
-// 	},
+	{
+		"AUGUUUUGG",
+		[]string{"Methionine", "Phenylalanine", "Tryptophan"},
+		nil,
+	},
+	{
+		"AUGUUUUAA",
+		[]string{"Methionine", "Phenylalanine"},
+		nil,
+	},
+	{
+		"UGGUGUUAUUAAUGGUUU",
+		[]string{"Tryptophan", "Cysteine", "Tyrosine"},
+		nil,
+	},
+	{
+		"UGGAGAAUUAAUGGUUU",
+		[]string{"Tryptophan"},
+		ErrInvalidBase,
+	},
 }
 
 func TestProtein(t *testing.T) {
@@ -177,13 +177,13 @@ func BenchmarkCodon(b *testing.B) {
 	}
 }
 
-// func BenchmarkProtein(b *testing.B) {
-// 	if testing.Short() {
-// 		b.Skip("skipping benchmark in short mode.")
-// 	}
-// 	for _, test := range proteinTestCases {
-// 		for i := 0; i < b.N; i++ {
-// 			FromRNA(test.input)
-// 		}
-// 	}
-// }
+func BenchmarkProtein(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	for _, test := range proteinTestCases {
+		for i := 0; i < b.N; i++ {
+			FromRNA(test.input)
+		}
+	}
+}
