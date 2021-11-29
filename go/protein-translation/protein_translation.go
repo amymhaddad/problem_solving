@@ -25,45 +25,48 @@ var allCodons = map[string]string{
 	"UGU": "Cysteine",
 	"UGC": "Cysteine",
 	"UGG": "Tryptophan",
-	"UAA": "",
-	"UAG": "",
-	"UGA": "",
 }
+var StopCodons = [3]string{"UAA", "UAG", "UGA"}
 
 //FromRNA returns a slice of protein strings
 func FromRNA(rna string) ([]string, error) {
 	var proteins []string
-	seen := make(map[string]bool)
 
 	for i := 0; i <= len(rna)-3; i += 3 {
-		codon, err := FromCodon(rna[i : i+3])
+		codon := rna[i : i+3]
 
-		switch err {
-		case ErrInvalidBase:
-			return proteins, err
-		case ErrStop:
+		if isStopCodon(codon) {
 			return proteins, nil
 		}
 
-		if seen[codon] || codon == "" {
-			continue
-		}
+		protein, err := FromCodon(codon)
 
-		proteins = append(proteins, codon)
-		seen[codon] = true
+		if err != nil {
+			return proteins, err
+		}
+		proteins = append(proteins, protein)
 	}
 	return proteins, nil
 }
 
+func isStopCodon(codon string) bool {
+	for _, stopCodon := range StopCodons {
+		if codon == stopCodon {
+			return true
+		}
+	}
+	return false
+}
+
 //FromCodon returns the rna protein
 func FromCodon(codon string) (string, error) {
-	value, found := allCodons[codon]
+	value := allCodons[codon]
 
-	if found && value == "" {
-		return value, ErrStop
-	} else if value != "" {
-		return value, nil
-	} else {
+	if isStopCodon(codon) {
+		return "", ErrStop
+	}
+	if value == "" {
 		return "", ErrInvalidBase
 	}
+	return value, nil
 }

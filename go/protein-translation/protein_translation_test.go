@@ -1,8 +1,8 @@
 package protein
 
 import (
-	"reflect"
 	"testing"
+	"reflect"
 )
 
 func TestErrorsNotNil(t *testing.T) {
