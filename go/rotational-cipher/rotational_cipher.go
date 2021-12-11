@@ -3,18 +3,19 @@ package rotationalcipher
 const alphaLength = 26
 
 func RotationalCipher(str string, shiftKey int) string {
+	var rotatedIndex int
 
-	distanceFromA := str - 'a'
-	newVal := 'a' + distanceFromA
+	for _, ch := range str {
 
-	if newVal > 'z' {
-		rotationAmt := alphaLength % shiftKey
-	} else {
 		rotationAmt := shiftKey
+
+		distanceFromA := ch - 'a'
+		newVal := 'a' + distanceFromA
+
+		if newVal > 'z' {
+			rotationAmt = alphaLength % shiftKey
+		}
+		rotatedIndex = 'a' + rotationAmt
 	}
-
-	rotatedIndex := 'a' + rotationAmt
-	rotatedVal := string(rotatedIndex)
-	return rotatedVal
-
+	return string(rune(rotatedIndex))
 }
