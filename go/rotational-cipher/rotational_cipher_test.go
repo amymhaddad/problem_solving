@@ -10,12 +10,12 @@ var testCases = []struct {
 	inputShiftKey int
 	expected      string
 }{
-	{
-		description:   "rotate a by 0, same output as input",
-		inputPlain:    "a",
-		inputShiftKey: 0,
-		expected:      "a",
-	},
+	// {
+	// 	description:   "rotate a by 0, same output as input",
+	// 	inputPlain:    "a",
+	// 	inputShiftKey: 0,
+	// 	expected:      "a",
+	// },
 	// {
 	// 	description:   "rotate a by 1",
 	// 	inputPlain:    "a",
@@ -28,12 +28,12 @@ var testCases = []struct {
 	// 	inputShiftKey: 26,
 	// 	expected:      "a",
 	// },
-	// {
-	// 	description:   "rotate n by 13 with wrap around alphabet",
-	// 	inputPlain:    "n",
-	// 	inputShiftKey: 13,
-	// 	expected:      "a",
-	// },
+	{
+		description:   "rotate n by 13 with wrap around alphabet",
+		inputPlain:    "n",
+		inputShiftKey: 13,
+		expected:      "a",
+	},
 	// {
 	// 	description:   "rotate capital letters",
 	// 	inputPlain:    "OMG",
