@@ -1,15 +1,15 @@
-from string import ascii_lowercase as lower, ascii_uppercase as upper
 
 ALPHA_LENGTH = 26
 START = 97
 
 def rotate(text, key):
-   # import pdb; pdb.set_trace()
-
     rotated_chars = []
 
     is_upper = False
     for ch in text:
+        if not ch.isalpha():
+            rotated_chars.append(ch)
+            continue
         if ch.isupper():
             is_upper = True
             ch = ch.lower()

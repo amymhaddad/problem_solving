@@ -24,21 +24,21 @@ class RotationalCipherTest(unittest.TestCase):
     def test_rotate_capital_letters(self):
         self.assertEqual(rotate("OMG", 5), "TRL")
 
-    # def test_rotate_spaces(self):
-    #     self.assertEqual(rotate("O M G", 5), "T R L")
-    #
-    # def test_rotate_numbers(self):
-    #     self.assertEqual(rotate("Testing 1 2 3 testing", 4), "Xiwxmrk 1 2 3 xiwxmrk")
-    #
-    # def test_rotate_punctuation(self):
-    #     self.assertEqual(rotate("Let's eat, Grandma!", 21), "Gzo'n zvo, Bmviyhv!")
-    #
-    # def test_rotate_all_letters(self):
-    #     self.assertEqual(
-    #         rotate("The quick brown fox jumps over the lazy dog.", 13),
-    #         "Gur dhvpx oebja sbk whzcf bire gur ynml qbt.",
-    #     )
-    #
+    def test_rotate_spaces(self):
+        self.assertEqual(rotate("O M G", 5), "T R L")
+
+    def test_rotate_numbers(self):
+        self.assertEqual(rotate("Testing 1 2 3 testing", 4), "Xiwxmrk 1 2 3 xiwxmrk")
+
+    def test_rotate_punctuation(self):
+        self.assertEqual(rotate("Let's eat, Grandma!", 21), "Gzo'n zvo, Bmviyhv!")
+
+    def test_rotate_all_letters(self):
+        self.assertEqual(
+            rotate("The quick brown fox jumps over the lazy dog.", 13),
+            "Gur dhvpx oebja sbk whzcf bire gur ynml qbt.",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
