@@ -28,24 +28,24 @@ var testCases = []struct {
 	// 	inputShiftKey: 26,
 	// 	expected:      "a",
 	// },
-	{
-		description:   "rotate n by 13 with wrap around alphabet",
-		inputPlain:    "n",
-		inputShiftKey: 13,
-		expected:      "a",
-	},
+	// {
+	// 	description:   "rotate n by 13 with wrap around alphabet",
+	// 	inputPlain:    "n",
+	// 	inputShiftKey: 13,
+	// 	expected:      "a",
+	// },
 	// {
 	// 	description:   "rotate capital letters",
 	// 	inputPlain:    "OMG",
 	// 	inputShiftKey: 5,
 	// 	expected:      "TRL",
 	// },
-	// {
-	// 	description:   "rotate spaces",
-	// 	inputPlain:    "O M G",
-	// 	inputShiftKey: 5,
-	// 	expected:      "T R L",
-	// },
+	{
+		description:   "rotate spaces",
+		inputPlain:    "O M G",
+		inputShiftKey: 5,
+		expected:      "T R L",
+	},
 	// {
 	// 	description:   "rotate numbers",
 	// 	inputPlain:    "Testing 1 2 3 testing",
