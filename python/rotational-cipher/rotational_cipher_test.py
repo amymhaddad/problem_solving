@@ -9,21 +9,21 @@ class RotationalCipherTest(unittest.TestCase):
     def test_rotate_a_by_0_same_output_as_input(self):
         self.assertEqual(rotate("a", 0), "a")
 
-    # def test_rotate_a_by_1(self):
-    #     self.assertEqual(rotate("a", 1), "b")
-    #
-    # def test_rotate_a_by_26_same_output_as_input(self):
-    #     self.assertEqual(rotate("a", 26), "a")
-    #
-    # def test_rotate_m_by_13(self):
-    #     self.assertEqual(rotate("m", 13), "z")
-    #
-    # def test_rotate_n_by_13_with_wrap_around_alphabet(self):
-    #     self.assertEqual(rotate("n", 13), "a")
-    #
-    # def test_rotate_capital_letters(self):
-    #     self.assertEqual(rotate("OMG", 5), "TRL")
-    #
+    def test_rotate_a_by_1(self):
+        self.assertEqual(rotate("a", 1), "b")
+
+    def test_rotate_a_by_26_same_output_as_input(self):
+        self.assertEqual(rotate("a", 26), "a")
+
+    def test_rotate_m_by_13(self):
+        self.assertEqual(rotate("m", 13), "z")
+
+    def test_rotate_n_by_13_with_wrap_around_alphabet(self):
+        self.assertEqual(rotate("n", 13), "a")
+
+    def test_rotate_capital_letters(self):
+        self.assertEqual(rotate("OMG", 5), "TRL")
+
     # def test_rotate_spaces(self):
     #     self.assertEqual(rotate("O M G", 5), "T R L")
     #
