@@ -14,11 +14,15 @@ func RotationalCipher(str string, shiftKey int) string {
 		var distFromA int
 		var newVal rune
 
-		//isAlpha := int(val) >= 97 && int(val) <= 123 || val >= 65 && int(val) <= 90
-
 		if strings.ContainsRune(string(val), 32) {
-			//	emptyString := ' '
 			newString = append(newString, ' ')
+			continue
+		}
+
+		if strings.ContainsAny(string(val), "0123456789") {
+			newString = append(newString, val)
+			continue
+
 		}
 
 		if int(val) >= 65 && int(val) <= 90 {
