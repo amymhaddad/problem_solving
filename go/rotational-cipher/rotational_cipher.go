@@ -16,9 +16,10 @@ func RotationalCipher(str string, shiftKey int) string {
 		isLower := unicode.IsLower(val)
 		isUpper := unicode.IsUpper(val)
 		isNumber := strings.ContainsAny(string(val), "0123456789")
+		isSpace := strings.ContainsRune(string(val), 32)
 
 		switch {
-		case strings.ContainsRune(string(val), 32):
+		case isSpace:
 			newVals.WriteRune(' ')
 		case isNumber || (!isUpper && !isLower):
 			newVals.WriteRune(val)
