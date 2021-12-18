@@ -12,78 +12,33 @@ func RotationalCipher(str string, shiftKey int) string {
 	var newVals strings.Builder
 
 	for _, val := range str {
+		var letterSize int
+		isLower := unicode.IsLower(val)
+		isUpper := unicode.IsUpper(val)
+		isNumber := strings.ContainsAny(string(val), "0123456789")
+
 		switch {
 		case strings.ContainsRune(string(val), 32):
 			newVals.WriteRune(' ')
-		case strings.ContainsAny(string(val), "0123456789"):
+		case isNumber || (!isUpper && !isLower):
 			newVals.WriteRune(val)
-		case unicode.IsUpper(val):
-			rotatedVal := rotateLetter(val, shiftKey)
-			// distFromStartOfAlpha = int(val) - int('A')
-			// shiftVal = (distFromStartOfAlpha + shiftKey) % alphaLength
-			// rotatedVal = rune(int('A') + shiftVal)
-			newVals.WriteRune(rotatedVal)
-
-		case unicode.IsLower(val):
-
-			rotatedVal := rotateLetter(val, shiftKey)
-			// distFromStartOfAlpha = int(val) - int('a')
-			// shiftVal = (distFromStartOfAlpha + shiftKey) % alphaLength
-			// rotatedVal = rune(int('a') + shiftVal)
-			newVals.WriteRune(rotatedVal)
-
 		default:
-			newVals.WriteRune(val)
+			if isUpper {
+				letterSize = int('A')
+			} else {
+				letterSize = int('a')
+			}
+			rotatedVal := rotateLetter(val, shiftKey, letterSize)
+			newVals.WriteRune(rotatedVal)
 		}
 	}
 	return newVals.String()
 }
 
-//Add bool as aparm on refactor
-func rotateLetter(letter rune, shiftKey int) rune {
-	var distFromStartOfAlpha int
-	var shiftVal int
-	var rotatedVal rune
+func rotateLetter(letter rune, shiftKey int, letterSize int) rune {
+	var distFromStartOfAlpha, shiftVal int
 
-	if unicode.IsUpper(letter) {
-		distFromStartOfAlpha = int(letter) - int('A')
-		shiftVal = (distFromStartOfAlpha + shiftKey) % alphaLength
-		rotatedVal = rune(int('A') + shiftVal)
-	} else {
-		distFromStartOfAlpha = int(letter) - int('a')
-		shiftVal = (distFromStartOfAlpha + shiftKey) % alphaLength
-		rotatedVal = rune(int('a') + shiftVal)
-	}
-	return rotatedVal
-
+	distFromStartOfAlpha = int(letter) - letterSize
+	shiftVal = (distFromStartOfAlpha + shiftKey) % alphaLength
+	return rune(letterSize + shiftVal)
 }
-
-// func RotationalCipher(str string, shiftKey int) string {
-// 	var newString []rune
-//
-// 	for _, val := range str {
-// 		var shiftVal int
-// 		var distFromStartOfAlpha int
-// 		var rotatedVal rune
-//
-// 		switch {
-// 		case strings.ContainsRune(string(val), 32):
-// 			newString = append(newString, ' ')
-// 		case strings.ContainsAny(string(val), "0123456789"):
-// 			newString = append(newString, val)
-// 		case int(val) >= 65 && int(val) <= 90:
-// 			distFromStartOfAlpha = int(val) - int('A')
-// 			shiftVal = (distFromStartOfAlpha + shiftKey) % alphaLength
-// 			rotatedVal = rune(int('A') + shiftVal)
-// 			newString = append(newString, rotatedVal)
-// 		case int(val) >= 97 && int(val) <= 123:
-// 			distFromStartOfAlpha = int(val) - int('a')
-// 			shiftVal = (distFromStartOfAlpha + shiftKey) % alphaLength
-// 			rotatedVal = rune(int('a') + shiftVal)
-// 			newString = append(newString, rotatedVal)
-// 		default:
-// 			newString = append(newString, val)
-// 		}
-// 	}
-// 	return string(newString)
-// }
