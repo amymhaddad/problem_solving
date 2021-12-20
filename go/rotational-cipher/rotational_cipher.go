@@ -12,7 +12,7 @@ func RotationalCipher(str string, shiftKey int) string {
 	var result strings.Builder
 
 	for _, r := range str {
-		var letterSize int
+		var rotate int
 
 		if !unicode.IsLetter(r) {
 			result.WriteRune(r)
@@ -20,21 +20,15 @@ func RotationalCipher(str string, shiftKey int) string {
 		}
 
 		if unicode.IsUpper(r) {
-			letterSize = int('A')
-		} else {
-			letterSize = int('a')
-		}
-		rotatedVal := rotateLetter(r, shiftKey, letterSize)
-		result.WriteRune(rotatedVal)
+			rotate = ((int(r) - int('A')) + shiftKey) % alphaLength
 
+		} else {
+			rotate = ((int(r) - int('a')) + shiftKey) % alphaLength
+		}
+
+		// distFromStartOfAlpha := int(r) - letterSize
+		// shiftValue := (distFromStartOfAlpha + shiftKey) % alphaLength
+		result.WriteRune(rune(rotate))
 	}
 	return result.String()
-}
-
-func rotateLetter(letter rune, shiftKey int, letterSize int) rune {
-	var distFromStartOfAlpha, shiftVal int
-
-	distFromStartOfAlpha = int(letter) - letterSize
-	shiftVal = (distFromStartOfAlpha + shiftKey) % alphaLength
-	return rune(letterSize + shiftVal)
 }
