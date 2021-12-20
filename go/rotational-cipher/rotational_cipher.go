@@ -9,7 +9,7 @@ const alphaLength = 26
 
 //RotationalCipher is a shift cipher that transposes the letters in the alphabet using an integer key between 0 and 26
 func RotationalCipher(str string, shiftKey int) string {
-	var newVals strings.Builder
+	var result strings.Builder
 
 	for _, val := range str {
 		var letterSize int
@@ -20,9 +20,9 @@ func RotationalCipher(str string, shiftKey int) string {
 
 		switch {
 		case isSpace:
-			newVals.WriteRune(' ')
+			result.WriteRune(' ')
 		case isNumber || (!isUpper && !isLower):
-			newVals.WriteRune(val)
+			result.WriteRune(val)
 		default:
 			if isUpper {
 				letterSize = int('A')
@@ -30,10 +30,10 @@ func RotationalCipher(str string, shiftKey int) string {
 				letterSize = int('a')
 			}
 			rotatedVal := rotateLetter(val, shiftKey, letterSize)
-			newVals.WriteRune(rotatedVal)
+			result.WriteRune(rotatedVal)
 		}
 	}
-	return newVals.String()
+	return result.String()
 }
 
 func rotateLetter(letter rune, shiftKey int, letterSize int) rune {
