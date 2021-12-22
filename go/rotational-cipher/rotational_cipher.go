@@ -23,8 +23,8 @@ func RotationalCipher(str string, shiftKey int) string {
 			base = 'A'
 		}
 
-		rotate := ((r-base)+rune(shiftKey))%alphaLength + base
-		result.WriteRune(rotate)
+		rotated_value := ((r-base)+rune(shiftKey))%alphaLength + base
+		result.WriteRune(rotated_value)
 	}
 	return result.String()
 }
